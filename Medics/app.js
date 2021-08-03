@@ -42,8 +42,8 @@ app.get('/HealthCheckup', (req, res) => {
     res.render('HealthCheckup')
 });
 
-app.get('/RuralHospitality', (req, res) => {
-    res.render('RuralHospitality')
+app.get('/Pollution', (req, res) => {
+    res.render('Pollution')
 });
 
 
