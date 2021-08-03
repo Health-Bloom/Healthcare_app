@@ -1,0 +1,40 @@
+.display_meds{
+    background-color: rgb(241, 211, 234);
+    border-radius: 20px;
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+}
+.display_text{
+    font-size: 30px;
+    font-family: 'Times New Roman', Times, serif;
+}
+.contribute{
+    background-color: rgb(192, 212, 243);
+    border-radius: 20px;
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px; 
+}
+.dots{
+    position: relative;
+    content: '';
+    background-color: rgb(29, 77, 37);
+    border-radius: 5px;
+    margin-top: 30px;
+    font-size: 0;    
+    padding: 5px;
+    width:3px;
+  margin-left: 10px;
+}
+.dot{
+    display: flex;
+  justify-content: center;
+}
+.image{
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    height:50vh;
+    width:auto
+}

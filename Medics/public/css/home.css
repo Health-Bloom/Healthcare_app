@@ -1,0 +1,81 @@
+body {
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("https://images.unsplash.com/photo-1603398938378-e54eab446dde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80");
+    background-size: cover;
+    background-position: center;
+    text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
+}
+.cover-container {
+  max-width: 60vw;
+}
+
+.nav-link {
+    padding: 0.25rem 0;
+    font-weight: 500;
+    color: rgba(255,255,255,0.5);
+    margin-left: 1rem;
+    border-bottom: 0.25rem solid transparent;
+}
+
+.nav-link:hover{
+    color: rgba(255,255,255,0.5);
+    border-bottom-color:rgba(255,255,255,0.5);
+}
+
+.nav-link.active {
+    color: rgb(30, 168, 30);
+    border-bottom-color:rgb(30, 168, 30);
+}
+
+.footer_area {
+  padding-top: 15px;
+  }
+  
+  .footer_menu ul li {
+    display: inline-block;
+  
+  }
+  .footer_social{
+    padding-right: 30px;
+  }
+  
+  
+  @media (max-width: 767px) {
+    .footer_menu ul li + li {
+      margin-left: 5px;
+    }
+  }
+  
+  .footer_menu ul li a {
+    font-size: 16px;
+    color: rgb(126, 126, 126);
+    transition: all 0.3s ease-out 0s;
+  }
+  
+  .footer_menu ul li a:hover {
+    color: rgb(126, 126, 126);
+  }
+  
+  .credit {
+    font-family: "Poppins", sans-serif;
+    font-size: 17px;
+    color:rgb(126, 126, 126);
+    padding-top: 3px;
+  }
+  
+  .credit a {
+    color: rgb(126, 126, 126);
+  }
+
+  .website{
+    text-decoration: none;
+    transition: all 0.3s ease-out 0s;
+
+  }
+  .website:hover{
+    color: #1a63a7;
+    cursor: pointer;
+    font-size: 18px;
+      }

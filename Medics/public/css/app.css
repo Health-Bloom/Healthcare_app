@@ -1,0 +1,51 @@
+.footer_area {
+    padding-top: 15px;
+    }
+    
+    .footer_menu ul li {
+      display: inline-block;
+    
+    }
+    .footer_social{
+      padding-right: 30px;
+    }
+    
+    
+    @media (max-width: 767px) {
+      .footer_menu ul li + li {
+        margin-left: 5px;
+      }
+    }
+    
+    .footer_menu ul li a {
+      font-size: 16px;
+      color: rgb(126, 126, 126);
+      transition: all 0.3s ease-out 0s;
+    }
+    
+    .footer_menu ul li a:hover {
+      color: rgb(126, 126, 126);
+    }
+    
+    .credit {
+      font-family: "Poppins", sans-serif;
+      font-size: 17px;
+      color:rgb(126, 126, 126);
+      padding-top: 3px;
+    }
+    
+    .credit a {
+      color: rgb(126, 126, 126);
+    }
+  
+    .website{
+      text-decoration: none;
+      transition: all 0.3s ease-out 0s;
+  
+    }
+    .website:hover{
+      color: #1a63a7;
+      cursor: pointer;
+      font-size: 18px;
+        }
+  
