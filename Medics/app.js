@@ -46,6 +46,7 @@ app.get('/RuralHospitality', (req, res) => {
     res.render('RuralHospitality')
 });
 
+
 const port = 3000;
 
 app.listen(port, () => {
