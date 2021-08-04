@@ -2,12 +2,21 @@
 
 <%- include('base/navbar')%>
 <html>
+
     <div class="container main_product">
     <h1 class="head">Pollution</h1>
+    <div class="col-md-6">
         <div class="border border-dark rounded p-2 shadow bg-light">
-            <div class="mb-3 container">
-                <label for="pollutionValue" class="form-label">Enter the value</label>
-                <input value="40.71427" id="pollutionValue" class="user form-control"></input><br>
+            <div class="row">
+                <div>
+                    <label for="pollutionValue" class="form-label">Latitude :</label>
+                    <input id="latitude" value="" class="user form-control"></input><br>
+                </div>
+                <div>
+                    <label for="pollutionValue" class="form-label">Longitude :</label>
+                    <input id="longitude"   value="" class="user form-control"></input><br>
+                </div>
+                <p><a class="btn btn-warning mt-2 submit">Search</a></p>
             </div>
             <div class="text-center">
                 <span class="btn btn-info m-2"><span class="lead"><b>co2 level</b></span> : <span class="input1 text-light"></span></span>
@@ -18,6 +27,7 @@
             </div>
         </div>
     </div>
+    </div>
     <%- include('base/footer')%>
-    <script src="/javascripts/pollutionRender.js"></script>
+    <script src="/javascripts/pollutionRender.js"></script> 
  </html>
