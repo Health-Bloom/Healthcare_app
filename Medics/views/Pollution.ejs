@@ -2,32 +2,39 @@
 
 <%- include('base/navbar')%>
 <html>
+    <link rel="stylesheet" href="/css/pollution.css">
 
     <div class="container main_product">
-    <h1 class="head">Pollution</h1>
-    <div class="col-md-6">
-        <div class="border border-dark rounded p-2 shadow bg-light">
-            <div class="row">
-                <div>
-                    <label for="pollutionValue" class="form-label">Latitude :</label>
-                    <input id="latitude" value="" class="user form-control"></input><br>
+        <h1 class="head text-center py-3 pb-5">Pollution</h1>
+        <div class="col-md-6">
+            <div class="border border-dark rounded p-3 shadow bg-light">
+                <div class="row">
+                    <div>
+                        <h3 class="head text-center py-3">Get the pollution details</h1>
+                        <label for="pollutionValue" class="form-label">Enter the Latitude :</label>
+                        <input id="latitude" value="" class="user form-control"></input><br>
+                    </div>
+                    <div>
+                        <label for="pollutionValue" class="form-label">Enter the Longitude :</label>
+                        <input id="longitude"   value="" class="user form-control"></input><br>
+                    </div>
+                    <p><a class="btn btn-warning mt-2 submit  col-12 col-md-12">Search</a></p>
                 </div>
-                <div>
-                    <label for="pollutionValue" class="form-label">Longitude :</label>
-                    <input id="longitude"   value="" class="user form-control"></input><br>
+                <div class="text-center">
+                    <span class="btn btn-info m-2"><span class="lead"><b>co2 level</b></span> : <span class="input1 text-light"></span></span>
+                    <span class="btn btn-info m-2"><span class="lead"><b>no2 level</b></span> : <span class="input2 text-light"></span></span>
+                    <span class="btn btn-info m-2"><span class="lead"><b>o3 level</b></span> : <span class="input3 text-light"></span></span>
+                    <span class="btn btn-info m-2"><span class="lead"><b>ppm per 10m</b></span> : <span class="input4 text-light"></span></span>
+                    <span class="btn btn-info m-2"><span class="lead"><b>ppm per 25m</b></span> : <span class="input5 text-light"></span></span>
                 </div>
-                <p><a class="btn btn-warning mt-2 submit">Search</a></p>
-            </div>
-            <div class="text-center">
-                <span class="btn btn-info m-2"><span class="lead"><b>co2 level</b></span> : <span class="input1 text-light"></span></span>
-                <span class="btn btn-info m-2"><span class="lead"><b>no2 level</b></span> : <span class="input2 text-light"></span></span>
-                <span class="btn btn-info m-2"><span class="lead"><b>o3 level</b></span> : <span class="input3 text-light"></span></span>
-                <span class="btn btn-info m-2"><span class="lead"><b>ppm per 10m</b></span> : <span class="input4 text-light"></span></span>
-                <span class="btn btn-info m-2"><span class="lead"><b>ppm per 25m</b></span> : <span class="input5 text-light"></span></span>
             </div>
         </div>
-    </div>
+        <h1 class="head text-center pt-5 ">Location on Map</h1>
+        <div class="border border-dark shadow bg-dark" id='map'></div>
     </div>
     <%- include('base/footer')%>
-    <script src="/javascripts/pollutionRender.js"></script> 
+    <script src="/javascripts/pollutionRender.js"></script>
+    <script>
+        
+    </script> 
  </html>
