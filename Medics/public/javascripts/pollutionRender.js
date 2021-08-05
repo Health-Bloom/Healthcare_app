@@ -28,11 +28,11 @@ poll_submit.addEventListener('click', function(){
     var i3=data.data[0].o3;
     var i6=data.data[0].so2;
 
-    input0.innerHTML=i0+ " ppm";
-    input1.innerHTML=i1+ " ppm";
-    input2.innerHTML=i2+ " ppm";
-    input3.innerHTML=i3+ " ppm";
-    input6.innerHTML=i6+" ppm";
+    input0.innerHTML=" : "+i0+ " ppm";
+    input1.innerHTML=" : "+i1+ " ppm";
+    input2.innerHTML=" : "+i2+ " ppm";
+    input3.innerHTML=" : "+i3+ " ppm";
+    input6.innerHTML=" : "+i6+" ppm";
 
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoic2FwdGFrMTAiLCJhIjoiY2tyeXB4cHYyMDY2NzJ2cGp5MzRoN21xdSJ9.zdeg5V6RN8vcfFZrZ2rBmw';

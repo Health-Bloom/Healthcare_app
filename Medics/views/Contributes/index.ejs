@@ -1,15 +1,7 @@
 <%- include('../base/header')%>
 
 <%- include('../base/navbar')%>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
-        integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/contribute.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-
-</head>
 <div>
     <img  class="image img-fluid" src="https://cdn.dribbble.com/users/398490/screenshots/4865340/mom-dribbble.gif">
 </div>
@@ -20,10 +12,10 @@
            <div class="row">
                <% for(let Contribute of Contributes) { %>
                 <div class="col-md-4">
-                        <div class="card mt-3 shadow p-3 mb-4 border-dark bg-info text-light">
+                        <div class="card mt-3 shadow p-3 mb-4 border-success bg-light bg-gradient text-success">
                         <h1><%= Contribute.name %></h1>
                         <p>Contact - <%= Contribute.number %></p>
-                        <p class=""><%= Contribute.medname %></p>
+                        <p class="btn btn-outline-primary d-flex justify-content-center lead">Medicine > <%= Contribute.medname %></p>
                         
                     </div>
                 </div>

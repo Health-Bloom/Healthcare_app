@@ -30,6 +30,18 @@ app.get('/', (req, res) => {
     res.render('home')
 });
 
+app.get('/register', (req, res) => {
+    res.render('usersAuth/register')
+});
+
+app.get('/login', (req, res) => {
+    res.render('usersAuth/login')
+});
+
+app.get('/logout', (req, res) => {
+    res.render('home')
+});
+
 app.get('/Contributes', async (req, res) => {
     const Contributes = await Contribute.find({})
     res.render('Contributes/index', { Contributes })

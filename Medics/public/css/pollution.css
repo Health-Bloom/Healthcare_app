@@ -9,6 +9,7 @@
 }
 body{
     background-color: #f39ca7;
+    font-family:'Roboto', sans-serif;
  }
  .head{
      font-family: 'Times New Roman', Times, serif;
@@ -16,16 +17,22 @@ body{
      padding: 20px;
  }
  .map{
-     padding:80px ;
+    padding:5%;
+    padding-bottom:10px;
  }
  .container .row .border{
     background-color: rgb(253, 226, 236);
  }
  .container .row .border .row .text .btn{
-     background-color: rgb(30, 19, 95);
+     background-color: rgb(92, 76, 180);
      color: white;
      border-radius: 8px;
      margin-bottom: 5px;
-     font-family:'Roboto', sans-serif;;
+     font-family:'Roboto', sans-serif;
      letter-spacing: 0.6px;
  }
+
+.heading{
+    font-family:'Roboto', sans-serif;
+    letter-spacing: 0.6px; 
+}

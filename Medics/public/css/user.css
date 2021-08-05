@@ -1,0 +1,47 @@
+/*===========================
+    11.REGISTER css 
+===========================*/
+
+.reg_form{
+    border-radius: 25px;
+    padding: 20px;
+    }
+    
+.reg_message{
+font-size: 18px;
+}
+
+.login_link{
+  color:rgb(202, 150, 91);
+text-decoration: none;
+transition: all 0.3s ease-out 0s;
+}
+
+.login_link:hover{
+  color:rgb(179, 31, 31);
+  cursor: pointer;
+  }
+
+/*===========================
+    11.LOGIN css 
+===========================*/
+
+.login_form{
+  border-radius: 25px;
+  padding: 20px;
+  }
+  
+.login_message{
+  font-size: 18px;
+}
+  
+.reg_link{
+color:rgb(202, 150, 91);
+text-decoration: none;
+transition: all 0.3s ease-out 0s;
+}
+  
+.reg_link:hover{
+  color:rgb(179, 31, 31);
+  cursor: pointer;
+}
