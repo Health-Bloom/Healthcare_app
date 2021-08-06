@@ -34,8 +34,16 @@ app.get('/register', (req, res) => {
     res.render('usersAuth/register')
 });
 
+app.post('/register', (req, res) => {
+    res.send(req.body)
+});
+
 app.get('/login', (req, res) => {
     res.render('usersAuth/login')
+});
+
+app.post('/login', (req, res) => {
+    res.send(req.body)
 });
 
 app.get('/logout', (req, res) => {
