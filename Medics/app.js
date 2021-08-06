@@ -1,12 +1,20 @@
 // if (process.env.NODE_ENV !== "production") {
 //     require('dotenv').config();
-// }
+// 
+
+const bcrypt = require('bcrypt');
+const users=[];
+const passport=require('passport');
+const initialisePassport=require('./views/usersAuth/passport-config')
+initialisePassport(passport)
+
 
 const express = require('express');
 const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
 const Contribute = require('./models/contributeSchema');
+
 // const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
 // const mapBoxToken = process.env.MAPBOX_TOKEN;
 // const geocoder = mbxGeocoding({ accessToken: mapBoxToken });
@@ -34,6 +42,23 @@ app.get('/register', (req, res) => {
     res.render('usersAuth/register')
 });
 
+//----------------------CHANGES
+app.get('/register',async(req,res)=>{
+    try{
+    const hashedPassword=await bcrypt.hash(req.body.password,5);
+    users.push({
+        id:Date.now().toString(),
+        username:req.body.username,
+        email:req.body.email,
+        password:hashedPassword,
+      });
+      res.redirect('/login');//so that user can login with the email after registering
+    }
+    catch{
+        res.redirect('/register');//incase of failure of registration
+    }
+})
+//------------------------
 app.post('/register', (req, res) => {
     res.send(req.body)
 });
