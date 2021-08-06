@@ -2,11 +2,11 @@
 //     require('dotenv').config();
 // 
 
-const bcrypt = require('bcrypt');
-const users=[];
-const passport=require('passport');
-const initialisePassport=require('./views/usersAuth/passport-config')
-initialisePassport(passport)
+// const bcrypt = require('bcrypt');
+// const users=[];
+// // const passport=require('passport');
+// // const initialisePassport=require('./views/usersAuth/passport-config')
+// // initialisePassport(passport)
 
 
 const express = require('express');
@@ -43,21 +43,21 @@ app.get('/register', (req, res) => {
 });
 
 //----------------------CHANGES
-app.get('/register',async(req,res)=>{
-    try{
-    const hashedPassword=await bcrypt.hash(req.body.password,5);
-    users.push({
-        id:Date.now().toString(),
-        username:req.body.username,
-        email:req.body.email,
-        password:hashedPassword,
-      });
-      res.redirect('/login');//so that user can login with the email after registering
-    }
-    catch{
-        res.redirect('/register');//incase of failure of registration
-    }
-})
+// app.post('/register',async(req,res)=>{
+//     try{
+//     const hashedPassword=await bcrypt.hash(req.body.password,5);
+//     users.push({
+//         id:Date.now().toString(),
+//         username:req.body.username,
+//         email:req.body.email,
+//         password:hashedPassword,
+//       });
+//       res.redirect('/login');//so that user can login with the email after registering
+//     }
+//     catch{
+//         res.redirect('/register');//incase of failure of registration
+//     }
+// })
 //------------------------
 app.post('/register', (req, res) => {
     res.send(req.body)
