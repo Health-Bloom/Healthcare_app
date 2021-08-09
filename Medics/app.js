@@ -107,6 +107,9 @@ app.get('/Pollution',async (req, res) => {
     res.render('Pollution')
 });
 
+app.get('/Hospital',(req, res) => {
+    res.render('Hospital')
+});
 
 const port = 3000;
 
