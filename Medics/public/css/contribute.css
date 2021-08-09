@@ -37,3 +37,15 @@
     height:50vh;
     width:auto
 }
+
+input{
+    border-radius: 15px;
+    height: 40px;
+    width: 400px;
+    font-size: large;
+    background-color: none;
+}
+
+option{
+background-color: aliceblue;
+}

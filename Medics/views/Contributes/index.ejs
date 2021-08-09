@@ -9,7 +9,13 @@
 <div class="container main_product">
     <div class="display_meds"> 
         <h2 class="display_text">Here are some of the meds that might benefit you!</h2>
-           <div class="row">
+        <input list="search" type="search" id="myInput" onsearch="searchMed()">
+        <datalist id="search">
+            <% for(let Contribute of Contributes) { %>
+                <option value="<%= Contribute.medname %>"></option>
+                <% }%>
+        </datalist>
+           <div class="row" id="medicine">
                <% for(let Contribute of Contributes) { %>
                 <div class="col-md-4">
                         <div class="card mt-3 shadow p-3 mb-4 border-success bg-light bg-gradient text-success">
@@ -39,5 +45,15 @@
     </div>
 </div>
 
-
+<script>
+    function searchMed() {
+       var x = document.getElementById("myInput");
+       var v= x.value;
+    //    for(let Contribute of Contributes) { 
+        //    if(v == Contribute){
+       document.getElementById("medicine").innerHTML = "Medicine > " + x.value;
+        //    }
+    //    }
+    }
+    </script>
     <%- include('../base/footer')%>
