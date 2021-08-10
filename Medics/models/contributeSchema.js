@@ -5,10 +5,9 @@ const contributeSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    number: {
-        type: Number,
-        required: true,
-        min: 0
+    emailEntry: {
+        type: String,
+        required: true
     },
     medname: {
         type: String,
