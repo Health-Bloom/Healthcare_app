@@ -38,14 +38,28 @@
     width:auto
 }
 
-input{
+.searchInput{
     border-radius: 15px;
     height: 40px;
-    width: 400px;
+    width: 50%;
     font-size: large;
-    background-color: none;
+    background-color: rgb(241, 211, 234);
+    border-color: rgb(0, 89, 255);
 }
 
 option{
 background-color: aliceblue;
 }
+
+.searchButton{
+    text-decoration: none;
+    border-radius: 25px;
+    border-color: rgb(0, 89, 255);
+    background-color: rgb(241, 211, 234);
+    transition: 500ms;
+    font-weight: bold;
+}
+
+.searchButton:hover{
+text-shadow: 0.25px 0.25px 0.5px #000000;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);}

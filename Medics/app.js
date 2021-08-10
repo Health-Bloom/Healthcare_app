@@ -76,8 +76,20 @@ app.get('/logout', (req, res) => {
 });
 
 app.get('/Contributes', async (req, res) => {
-    const Contributes = await Contribute.find({})
-    res.render('Contributes/index', { Contributes })
+    var noMatch = null;
+    if(req.query.search) {
+        const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+
+        const Contributes = await Contribute.find({medname: regex})
+        if(Contributes < 1) {
+            noMatch = "No medicine found with the name : "+req.query.search;
+        }
+        res.render('Contributes/index', { Contributes , noMatch: noMatch})
+    } else {
+        const Contributes = await Contribute.find({})
+        res.render('Contributes/index', { Contributes , noMatch: noMatch})
+    }
+
 });
 
 app.get('/Contributes/new', (req, res) => {
@@ -110,6 +122,10 @@ app.get('/Pollution',async (req, res) => {
 app.get('/Hospital',(req, res) => {
     res.render('Hospital')
 });
+
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
 
 const port = 3000;
 

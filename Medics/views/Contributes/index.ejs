@@ -9,26 +9,34 @@
 <div class="container main_product">
     <div class="display_meds"> 
         <h2 class="display_text">Here are some of the meds that might benefit you!</h2>
-        <input list="search" type="search" id="myInput" onsearch="searchMed()">
-        <datalist id="search">
-            <% for(let Contribute of Contributes) { %>
-                <option value="<%= Contribute.medname %>"></option>
-                <% }%>
-        </datalist>
-           <div class="row" id="medicine">
+            <form class="pt-4" action="/Contributes" method="GET">
+                    <input class="searchInput" list="search" type="search" name="search">
+                        <datalist id="search">
+                            <% for(let Contribute of Contributes) { %>
+                                <option value="<%= Contribute.medname %>"></option>
+                                <% }%>
+                        </datalist>
+                    <input class="searchButton px-3 p-1" type="submit" value="Search" class="btn-sm">
+            </form>
+           <div class="row">
+                <div class="col-md-12 py-3 pt-5">
+                    <% if(noMatch !== null) { %>
+                    <h4><%= noMatch %></h4>
+                    <a class="btn btn-info mt-2" href="/Contributes">Other Medicines</a>
+                    <a class="btn btn-warning mt-2" href="/Contributes/new">Contribute</a>
+                    <% } %>
+                </div>
                <% for(let Contribute of Contributes) { %>
                 <div class="col-md-4">
-                        <div class="card mt-3 shadow p-3 mb-4 border-success bg-light bg-gradient text-success">
+                    <div class="card mt-3 shadow p-3 mb-4 border-success bg-light bg-gradient text-success">
                         <h1><%= Contribute.name %></h1>
                         <p>Contact - <%= Contribute.number %></p>
                         <p class="btn btn-outline-primary d-flex justify-content-center lead">Medicine > <%= Contribute.medname %></p>
-                        
                     </div>
                 </div>
                 <% }%>
            </div>
      </div>
-
   
      <div class="dot">
      <div class="dots"></div>
@@ -38,22 +46,11 @@
 </div>
 <div class="container">
      <div class="contribute">
-    <h2 class="display_text"><i class="fas fa-hand-holding-medical"></i>   Help others by Contributing</h2>
+    <h2 class="display_text"><i class="fas fa-hand-holding-medical"></i>Help others by Contributing</h2>
     <div class="container text-center rounded">
         <p>Contribute your left out medicines to save others lives</p>
         <p><a class="btn btn-warning mt-2" href="/Contributes/new">Contribute</a></p>
     </div>
 </div>
 
-<script>
-    function searchMed() {
-       var x = document.getElementById("myInput");
-       var v= x.value;
-    //    for(let Contribute of Contributes) { 
-        //    if(v == Contribute){
-       document.getElementById("medicine").innerHTML = "Medicine > " + x.value;
-        //    }
-    //    }
-    }
-    </script>
     <%- include('../base/footer')%>
