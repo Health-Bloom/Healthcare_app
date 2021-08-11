@@ -11,6 +11,27 @@ body{
     color:rgb(0, 52, 119);
     font-weight: bolder;
 }
+@media (min-width: 800px) {
+    .product {
+       display:flex;
+        }
+        .product .left{
+           min-width: 50%;
+            margin: 0 auto 60px;
+        }
+        .product right{
+            flex: 100%;
+        }
+    }
+    @media (max-width: 770px) {
+        .product .right{
+            margin-top: 30px;
+         }
+         .product img{
+             height:70%;
+             width:auto
+         }
+        }
 
 .display_meds{
     background-color: rgb(211, 212, 241);
@@ -51,10 +72,9 @@ body{
     display: flex;
   justify-content: center;
 }
-.display{
+.right{
     border-radius: 50px;
     padding:20px;
-    max-width: 50%;
     align-self: center;
     font-size: large;
     margin: auto;
@@ -64,7 +84,7 @@ body{
 .image{
     display:block;
     height:50vh;
-    border-radius: 200px 6%;
+    border-radius: 150px 6%;
     margin-top: 2%;
     width:auto;
     box-shadow: 5px 10px 30px;
