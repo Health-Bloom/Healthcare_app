@@ -1,16 +1,29 @@
 <%- include('../base/header')%>
 
 <%- include('../base/navbar')%>
+<body>
     <link rel="stylesheet" href="/css/contribute.css">
-<div>
-    <img  class="image img-fluid" src="https://cdn.dribbble.com/users/398490/screenshots/4865340/mom-dribbble.gif">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+<div class="container d-flex p-3 main_product" >
+    <div>
+        <img  class="image img-fluid" src="https://cdn.dribbble.com/users/398490/screenshots/4865340/mom-dribbble.gif">
+    </div>
+   <div class="border border-primary display">
+      <h3 class="text-center"><i class="fas fa-hands-helping"></i>   Our Mission</h3>
+      <p class="text-center">A web Page where people who have recovered from a disease, can share their left out medicines, which are no more of use to them in first place. This will help contributing medicines to those needy people who live in rural areas or can afford to buy medicines</p>
+   </div>
 </div>
+<div class="dot">
+    <div class="dots"></div>
+    <div class="dots"></div>
+    <div class="dots"></div>
+   </div>
 
 <div class="container main_product">
-    <div class="display_meds"> 
-        <h2 class="display_text">Here are some of the meds that might benefit you!</h2>
+    <div class="border border-primary display_meds"> 
+            <h2 class="display_text">Here are some of the meds that might benefit you!</h2>
             <form class="pt-4" action="/Contributes" method="GET">
-                    <input class="searchInput" list="search" type="search" name="search">
+                    <input class="searchInput p-3" list="search" type="search" name="search" placeholder="Enter a medicine name">
                         <datalist id="search">
                             <% for(let Contribute of Contributes) { %>
                                 <option value="<%= Contribute.medname %>"></option>
@@ -26,7 +39,35 @@
                     <a class="btn btn-warning mt-2" href="/Contributes/new">Contribute</a>
                     <% } %>
                 </div>
-               <% for(let Contribute of Contributes) { %>
+                
+                    <div class="shadow border p-3 mb-3 border-success bg-light bg-gradient text-success">
+                <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">SR No</th>
+                        <th scope="col">Name of Contributer</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">Medicine</th>
+                        <th scope="col">Doses</th>
+
+
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <% var i=1;%>
+                        <% for(let Contribute of Contributes) { %>
+                      <tr>
+                        <th scope="row"><%=i%></th>
+                        <td>  <h3><%= Contribute.name %></h3></td>
+                        <td><p><%= Contribute.emailEntry %></p></td>
+                        <td><%= Contribute.medname %></td>
+                      </tr>
+                      <% i++;}%>
+                        
+                    </tbody>
+                  </table>
+                </div>
+                <!--<% for(let Contribute of Contributes) { %>
                 <div class="col-md-4">
                     <div class="card mt-3 shadow p-3 mb-4 border-success bg-light bg-gradient text-success">
                         <h1><%= Contribute.name %></h1>
@@ -34,7 +75,7 @@
                         <p class="btn btn-outline-primary d-flex justify-content-center lead">Medicine > <%= Contribute.medname %></p>
                     </div>
                 </div>
-                <% }%>
+                <% }%>-->
            </div>
      </div>
   
@@ -44,13 +85,13 @@
      <div class="dots"></div>
     </div>
 </div>
-<div class="container">
-     <div class="contribute">
+<div class="container ">
+     <div class="contribute border border-primary">
     <h2 class="display_text"><i class="fas fa-hand-holding-medical"></i>Help others by Contributing</h2>
     <div class="container text-center rounded">
         <p>Contribute your left out medicines to save others lives</p>
         <p><a class="btn btn-warning mt-2" href="/Contributes/new">Contribute</a></p>
     </div>
 </div>
-
+</body>
     <%- include('../base/footer')%>
