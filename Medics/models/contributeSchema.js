@@ -12,6 +12,10 @@ const contributeSchema = new mongoose.Schema({
     medname: {
         type: String,
         required: true
+    },
+    medAmount:{
+        type: Number,
+        required: true
     }
 })
 

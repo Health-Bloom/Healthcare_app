@@ -92,6 +92,10 @@ app.get('/Contributes', async (req, res) => {
 
 });
 
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
+
 app.get('/Contributes/new', (req, res) => {
     res.render('Contributes/new')
 });
@@ -119,13 +123,9 @@ app.get('/Pollution',async (req, res) => {
     res.render('Pollution')
 });
 
-app.get('/Hospital',(req, res) => {
-    res.render('Hospital')
+app.get('/earthquakes',(req, res) => {
+    res.render('earthquakes')
 });
-
-function escapeRegex(text) {
-    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
-};
 
 const port = 3000;
 

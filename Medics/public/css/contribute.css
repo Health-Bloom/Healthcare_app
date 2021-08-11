@@ -1,7 +1,17 @@
 body{
     background-color: rgb(211, 212, 241);
-
 }
+
+.mail{
+ color:rgb(0, 110, 255);
+ transition:500ms;
+}
+.mail:hover{
+    font-size: 25px;
+    color:rgb(0, 52, 119);
+    font-weight: bolder;
+}
+
 .display_meds{
     background-color: rgb(211, 212, 241);
     border-radius: 25px;
@@ -19,7 +29,8 @@ body{
     font-size: 30px;
 }
 .contribute{
-    background-color: white;
+    background-color: rgb(97, 145, 204);
+    color:rgb(255, 255, 255);
     border-radius: 20px;
     text-align: center;
     margin-top: 30px;
