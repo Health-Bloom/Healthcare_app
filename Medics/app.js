@@ -1,6 +1,5 @@
 // if (process.env.NODE_ENV !== "production") {
 //     require('dotenv').config();
-// 
 
 // const bcrypt = require('bcrypt');
 // const users=[];
@@ -12,11 +11,14 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const { medicineSchema } = require('./joiSchema.js');
-const catchAsync = require('./errorHandling/catchAsync');
+// const { medicineSchema } = require('./joiSchema.js');
+// const catchAsync = require('./errorHandling/catchAsync');
 const ExpressError = require('./errorHandling/ExpressError');
 const mongoose = require('mongoose');
-const Contribute = require('./models/contributeSchema');
+// const Contribute = require('./models/contributeSchema');
+
+const contributeRoutes = require('./routes/contributeRoutes');
+const userRoutes = require('./routes/userRoutes');
 
 // const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
 // const mapBoxToken = process.env.MAPBOX_TOKEN;
@@ -39,92 +41,25 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 //validating the medicines parameters
 
-const validateMedicine = (req, res, next) => {
-    const { error } = medicineSchema.validate(req.body);
-    if (error) {
-        const msg = error.details.map(el => el.message).join(',')
-        throw new ExpressError(msg, 400)
-    } else {
-        next();
-    }
-}
+// const validateMedicine = (req, res, next) => {
+//     const { error } = medicineSchema.validate(req.body);
+//     if (error) {
+//         const msg = error.details.map(el => el.message).join(',')
+//         throw new ExpressError(msg, 400)
+//     } else {
+//         next();
+//     }
+// }
 
 //API routes start
+
+app.use('/Contributes', contributeRoutes)
+
+app.use('/', userRoutes)
 
 app.get('/', (req, res) => {
     res.render('home')
 });
-
-app.get('/register', (req, res) => {
-    res.render('usersAuth/register')
-});
-
-//----------------------CHANGES
-// app.post('/register',async(req,res)=>{
-//     try{
-//     const hashedPassword=await bcrypt.hash(req.body.password,5);
-//     users.push({
-//         id:Date.now().toString(),
-//         username:req.body.username,
-//         email:req.body.email,
-//         password:hashedPassword,
-//       });
-//       res.redirect('/login');//so that user can login with the email after registering
-//     }
-//     catch{
-//         res.redirect('/register');//incase of failure of registration
-//     }
-// })
-//------------------------
-app.post('/register', (req, res) => {
-    res.send(req.body)
-});
-
-app.get('/login', (req, res) => {
-    res.render('usersAuth/login')
-});
-
-app.post('/login', (req, res) => {
-    res.send(req.body)
-});
-
-app.get('/logout', (req, res) => {
-    res.render('home')
-});
-
-app.get('/Contributes', async (req, res) => {
-    var noMatch = null;
-    if(req.query.search) {
-        const regex = new RegExp(escapeRegex(req.query.search), 'gi');
-
-        const Contributes = await Contribute.find({medname: regex})
-        if(Contributes < 1) {
-            noMatch = "No medicine found with the name : "+req.query.search;
-        }
-        res.render('Contributes/index', { Contributes , noMatch: noMatch})
-    } else {
-        const Contributes = await Contribute.find({})
-        res.render('Contributes/index', { Contributes , noMatch: noMatch})
-    }
-
-});
-
-//search algorithm
-
-function escapeRegex(text) {
-    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
-};
-
-app.get('/Contributes/new', (req, res) => {
-    res.render('Contributes/new')
-});
-
-app.post('/Contributes', validateMedicine,catchAsync(async (req, res) => {
-    // if (!req.body.Contribute) throw new ExpressError('Invalid Medicine Details', 400);
-    const newContribute = new Contribute(req.body);
-    await newContribute.save();
-    res.redirect(`/Contributes`)
-}));
 
 app.get('/HealthCheckup', (req, res) => {
     res.render('HealthCheckup')
