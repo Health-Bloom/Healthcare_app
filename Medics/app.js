@@ -12,6 +12,9 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const { medicineSchema } = require('./joiSchema.js');
+const catchAsync = require('./errorHandling/catchAsync');
+const ExpressError = require('./errorHandling/ExpressError');
 const mongoose = require('mongoose');
 const Contribute = require('./models/contributeSchema');
 
@@ -33,6 +36,20 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')))
+
+//validating the medicines parameters
+
+const validateMedicine = (req, res, next) => {
+    const { error } = medicineSchema.validate(req.body);
+    if (error) {
+        const msg = error.details.map(el => el.message).join(',')
+        throw new ExpressError(msg, 400)
+    } else {
+        next();
+    }
+}
+
+//API routes start
 
 app.get('/', (req, res) => {
     res.render('home')
@@ -92,6 +109,8 @@ app.get('/Contributes', async (req, res) => {
 
 });
 
+//search algorithm
+
 function escapeRegex(text) {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 };
@@ -100,11 +119,12 @@ app.get('/Contributes/new', (req, res) => {
     res.render('Contributes/new')
 });
 
-app.post('/Contributes', async (req, res) => {
+app.post('/Contributes', validateMedicine,catchAsync(async (req, res) => {
+    // if (!req.body.Contribute) throw new ExpressError('Invalid Medicine Details', 400);
     const newContribute = new Contribute(req.body);
     await newContribute.save();
     res.redirect(`/Contributes`)
-});
+}));
 
 app.get('/HealthCheckup', (req, res) => {
     res.render('HealthCheckup')
@@ -126,6 +146,22 @@ app.get('/Pollution',async (req, res) => {
 app.get('/earthquakes',(req, res) => {
     res.render('earthquakes')
 });
+
+//error handling for all the routes
+
+app.all('*', (req, res, next) => {
+    next(new ExpressError('Page Not Found', 404))
+})
+
+//error handling template display
+
+app.use((err, req, res, next) => {
+    const { statusCode = 500 } = err;
+    if (!err.message) err.message = 'Looks like you are lost!'
+    res.status(statusCode).render('error', { err ,statusCode})
+})
+
+//port listening 3000
 
 const port = 3000;
 
