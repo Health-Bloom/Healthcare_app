@@ -11,11 +11,14 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-// const { medicineSchema } = require('./joiSchema.js');
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
 // const catchAsync = require('./errorHandling/catchAsync');
 const ExpressError = require('./errorHandling/ExpressError');
 const mongoose = require('mongoose');
-// const Contribute = require('./models/contributeSchema');
+const session = require('express-session');
+const flash = require('connect-flash');
+const User = require('./models/userSchema');
 
 const contributeRoutes = require('./routes/contributeRoutes');
 const userRoutes = require('./routes/userRoutes');
@@ -39,17 +42,32 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')))
 
-//validating the medicines parameters
+const sessionConfig = {
+    secret: 'thisshouldbeabettersecret!',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        httpOnly: true,
+        expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+        maxAge: 1000 * 60 * 60 * 24 * 7
+    }
+}
+app.use(session(sessionConfig))
+app.use(flash());
 
-// const validateMedicine = (req, res, next) => {
-//     const { error } = medicineSchema.validate(req.body);
-//     if (error) {
-//         const msg = error.details.map(el => el.message).join(',')
-//         throw new ExpressError(msg, 400)
-//     } else {
-//         next();
-//     }
-// }
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+app.use((req, res, next) => {
+    res.locals.currentUser = req.user;
+    res.locals.success = req.flash('success');
+    res.locals.error = req.flash('error');
+    next();
+})
 
 //API routes start
 

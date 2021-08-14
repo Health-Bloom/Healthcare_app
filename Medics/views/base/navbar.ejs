@@ -20,10 +20,16 @@
         </li>
       </ul>
       <div class="navbar-nav">
+        <% if(!currentUser) {%>
           <a class="nav-link" href="/login">Login</a>
           <a class="nav-link" href="/register">Register</a>
+          <% } else {%>
+          <a class="nav-link text-warning font-weight-bold"><%= currentUser.username %></a>
           <a class="nav-link" href="/logout">Logout</a>
+          <% } %>
       </div>
     </div>
   </div>
 </nav>
+
+<%- include('./flash.ejs')%>
