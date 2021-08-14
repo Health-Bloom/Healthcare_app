@@ -4,73 +4,128 @@
 <div class="container main_product">
     <h1 class="head">HealthCheckup</h1>
 
-    <form class="row g-3 needs-validation" >
+    <!--<form class="row g-3 needs-validation" >
         <div class="col-md-4">
-          <label for="validationCustom01" class="form-label">First name</label>
-          <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
+          <label for="validationCustom01" class="form-label">Name</label>
+          <input type="text" class="form-control" id="validationCustom01" required>
           <div class="valid-feedback">
             Looks good!
           </div>
         </div>
-        <div class="col-md-4">
+        <!--<div class="col-md-4">
           <label for="validationCustom02" class="form-label">Last name</label>
           <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
           <div class="valid-feedback">
             Looks good!
           </div>
         </div>
-        <div class="col-md-4">
-          <label for="validationCustomUsername" class="form-label">Username</label>
-          <div class="input-group has-validation">
-            <span class="input-group-text" id="inputGroupPrepend">@</span>
-            <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
-            <div class="invalid-feedback">
-              Please choose a username.
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <label for="validationCustom03" class="form-label">City</label>
-          <input type="text" class="form-control" id="validationCustom03" required>
-          <div class="invalid-feedback">
-            Please provide a valid city.
-          </div>
+       
+        <div class="col-md-3">
+          <label for="validationCustom03" class="form-label">Age</label>
+          <input type="text" class="form-control" id="input2" value="" required>
+         
         </div>
         <div class="col-md-3">
-          <label for="validationCustom04" class="form-label">State</label>
-          <select class="form-select" id="validationCustom04" required>
-            <option selected disabled value="">None</option>
-            <option>West Bengal</option>
-            <option>Orissa</option>
+          <label for="validationCustom04" class="form-label">Gender</label>
+          <select class="form-select" id="input3" value="" required>
+            <option>Male</option>
+            <option>Female</option>
           </select>
-          <div class="invalid-feedback">
-            Please select a valid state.
-          </div>
+          
         </div>
         <div class="col-md-3">
-          <label for="validationCustom05" class="form-label">Zip</label>
-          <input type="text" class="form-control" id="validationCustom05" required>
-          <div class="invalid-feedback">
-            Please provide a valid zip.
-          </div>
+          <label for="validationCustom05" class="form-label">Height(CMs)</label>
+          <input type="text" class="form-control" id="input4" value="" required>
+          
         </div>
-        <div class="col-12">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-            <label class="form-check-label" for="invalidCheck">
-              Agree to terms and conditions
-            </label>
-            <div class="invalid-feedback">
-              You must agree before submitting.
-            </div>
-          </div>
+        <div class="col-md-3">
+          <label for="validationCustom05" class="form-label">Weight(KGs)</label>
+          <input type="text" class="form-control" id="input5" value="" required>
+          
         </div>
+        <!--<div class="col-md-3">
+          <label for="validationCustom05" class="form-label">Activity Level</label>
+          <input type="text" class="form-control" id="input6" value="" required>
+          
+        </div>
+       -->
+
+       <h3 class="head text-center py-3">Enter the Details</h1>
+        <div>
+            <input value="" class="bg-transparent border border-primary user form-control" placeholder="Enter name"></input><br>
+        </div>
+        <div>
+            <input  value=""  id="input2" class="bg-transparent border border-primary user form-control" type="number"placeholder="Enter age"></input><br>
+        </div>
+        <div>
+          <select  value=""  id="input3" class="bg-transparent  border border-primary user form-control" placeholder="Enter gender">
+            <option>male</option>
+            <option>female</option>
+          </select>
+          <br>
+      </div>
+      <div>
+        <input  value=""  id="input4" class="bg-transparent  border border-primary user form-control" placeholder="Enter height"></input><br>
+    </div>
+    <div>
+      <input  value=""  id="input5" class="bg-transparent border border-primary user form-control" placeholder="Enter weight"></input><br>
+  </div>
+  
         <div class="col-12">
-          <button class="btn btn-primary" type="submit">Submit form</button>
+          <button class="btn btn-primary" type="submit" class="submit" onclick="handleSubmit()">Submit</button>
         </div>
       </form>
 
         </div>
 </div>
+<script>
+var age = document.querySelector('#input2');
+var gender = document.querySelector('#input3');
+var height = document.querySelector('#input4');
+var weight = document.querySelector('#input5');
+//var activity = document.querySelector('#input6');
+
+console.log(1);
+function handleSubmit(){
+ 
+  console.log(4);
+  age=parseInt(age.value);
+  height=parseInt(height.value);
+  weight=parseInt(weight.value);
+
+
+  console.log(typeof(age));
+
+  console.log(gender.value);
+
+
+  fetch('https://fitness-calculator.p.rapidapi.com/macrocalculator?age='+age+'&gender='+gender.value+'&height='+height+'&weight='+weight+'&activitylevel=5&goal=extremelose', {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-key": "ee57f911c9msh54de0a6c51c79a3p153facjsn8e9674e30bb6",
+		"x-rapidapi-host": "fitness-calculator.p.rapidapi.com"
+	}
+})
+.then(response => response.json())
+.then(data=>{
+    console.log(data);
+  /*  var i0=data.data[0].aqi;
+    var i1=data.data[0].co;
+    var i2=data.data[0].no2;
+    var i3=data.data[0].o3;
+    var i6=data.data[0].so2;
+
+    input0.innerHTML=" : "+i0+ " ppm";
+    input1.innerHTML=" : "+i1+ " ppm";
+    input2.innerHTML=" : "+i2+ " ppm";
+    input3.innerHTML=" : "+i3+ " ppm";
+    input6.innerHTML=" : "+i6+" ppm";
+
+*/
+})
+
+}
+
+</script>
 
     <%- include('base/footer')%>
