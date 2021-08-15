@@ -3,29 +3,12 @@ const router = express.Router();
 const passport = require('passport');
 const catchAsync = require('../errorHandling/catchAsync');
 const User = require('../models/userSchema');
-// const ExpressError = require('../errorHandling/ExpressError');
+// const Contribute = require('../models/contributeSchema');
 
 router.get('/register', (req, res) => {
     res.render('usersAuth/register')
 });
 
-//----------------------CHANGES
-// router.post('/register',async(req,res)=>{
-//     try{
-//     const hashedPassword=await bcrypt.hash(req.body.password,5);
-//     users.push({
-//         id:Date.now().toString(),
-//         username:req.body.username,
-//         email:req.body.email,
-//         password:hashedPassword,
-//       });
-//       res.redirect('/login');//so that user can login with the email after registering
-//     }
-//     catch{
-//         res.redirect('/register');//incase of failure of registration
-//     }
-// })
-//------------------------
 router.post('/register', catchAsync(async(req, res) => {
     try {
         const { email, username, password } = req.body;
@@ -58,5 +41,23 @@ router.get('/logout', (req, res) => {
     req.flash('success', "You have logged out!");
     res.redirect('/home')
 });
+
+// USER PROFILE
+
+// router.get("/users/:id", function(req, res) {
+//     User.findById(req.params.id, function(err, foundUser) {
+//       if(err) {
+//         req.flash("error", "Something went wrong.");
+//         return res.redirect("/");
+//       }
+//       Contribute.find().where('author.id').equals(foundUser._id).exec(function(err, Contributes) {
+//         if(err) {
+//           req.flash("error", "Something went wrong.");
+//           return res.redirect("/");
+//         }
+//         res.render("users/show", {user: foundUser, Contributes: Contributes});
+//       })
+//     });
+//   });
 
 module.exports = router;
