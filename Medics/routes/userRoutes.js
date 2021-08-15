@@ -44,7 +44,7 @@ router.get('/logout', (req, res) => {
 
 // USER PROFILE
 
-// router.get("/users/:id", function(req, res) {
+// router.get("/users/:id", catchAsync((req, res) => {
 //     User.findById(req.params.id, function(err, foundUser) {
 //       if(err) {
 //         req.flash("error", "Something went wrong.");
@@ -58,6 +58,22 @@ router.get('/logout', (req, res) => {
 //         res.render("users/show", {user: foundUser, Contributes: Contributes});
 //       })
 //     });
-//   });
+//   }));
+
+// router.get("/users/:id/edit", catchAsync((req, res) => {
+//     User.findById(req.params.id, function(err, foundUser) {
+//       if(err) {
+//         req.flash("error", "Something went wrong.");
+//         return res.redirect("/");
+//       }
+//       Contribute.find().where('author.id').equals(foundUser._id).exec(function(err, Contributes) {
+//         if(err) {
+//           req.flash("error", "Something went wrong.");
+//           return res.redirect("/");
+//         }
+//         res.render("users/show", {user: foundUser, Contributes: Contributes});
+//       })
+//     });
+//   }));
 
 module.exports = router;
