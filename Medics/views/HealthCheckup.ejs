@@ -1,6 +1,11 @@
 <%- include('base/header')%>
 
 <%- include('base/navbar')%>
+<style>
+.display_right .border{
+  border-radius: 20px;
+}
+</style>
 <div class="container main_product">
     <h1 class="head">HealthCheckup</h1>
 
@@ -49,57 +54,95 @@
           
         </div>
        -->
-
+  <div class="display_left col-6">
        <h3 class="head text-center py-3">Enter the Details</h1>
+        
         <div>
-            <input value="" class="bg-transparent border border-primary user form-control" placeholder="Enter name"></input><br>
+            <input value="" class="bg-transparent  border border-primary user form-control" placeholder="Enter name"></input><br>
         </div>
-        <div>
+        <div class="row">
+        <div class="col">
             <input  value=""  id="input2" class="bg-transparent border border-primary user form-control" type="number"placeholder="Enter age"></input><br>
         </div>
-        <div>
+        <div class="col">
           <select  value=""  id="input3" class="bg-transparent  border border-primary user form-control" placeholder="Enter gender">
             <option>male</option>
             <option>female</option>
           </select>
           <br>
+        </div>
       </div>
-      <div>
-        <input  value=""  id="input4" class="bg-transparent  border border-primary user form-control" placeholder="Enter height"></input><br>
-    </div>
-    <div>
-      <input  value=""  id="input5" class="bg-transparent border border-primary user form-control" placeholder="Enter weight"></input><br>
-  </div>
-  
+      <div class="row">
+        <div class="col">
+          <input  value=""  id="input4" class="bg-transparent  border border-primary user form-control" placeholder="Enter height"></input><br>
+        </div>
+        <div class="col">
+          <input  value=""  id="input5" class="bg-transparent border border-primary user form-control" placeholder="Enter weight"></input><br>
+        </div>
+        <div class="col">
+          <input  value=""  id="input6" class="bg-transparent  border border-primary user form-control" placeholder="Enter Activity level"></input><br>
+        </div>
+      </div>
+
         <div class="col-12">
           <button class="btn btn-primary" type="submit" class="submit" onclick="handleSubmit()">Submit</button>
         </div>
       </form>
+  </div>  
 
-        </div>
+     <div class="display_right">
+      <div class="cal text-center"></div>
+
+      <div class="border border-primary p-2 col-6">
+        <h3 class="text-center">For balanced diet</h3>
+        <p>Protein Intake:<span class="bprotein"></span></p>
+        <p>Fat Intake:<span class="bfat"></span></p>
+        <p>Carbs Intake:<span class="bcarbs"></span></p>
+      </div>
+
+      <div class="border border-primary p-2 col-6">
+        <h3 class="text-center">For High-Protien diet</h3>
+        <p>Protein Intake:<span class="hprotein"></span></p>
+        <p>Fat Intake:<span class="hfat"></span></p>
+        <p>Carbs Intake:<span class="hcarbs"></span></p>
+      </div>
+
+      <div class="border border-primary p-2 col-6">
+        <h3 class="text-center">For Low-Fat diet</h3>
+        <p>Protein Intake:<span class="lfprotein"></span></p>
+        <p>Fat Intake:<span class="lffat"></span></p>
+        <p>Carbs Intake:<span class="lfcarbs"></span></p>
+      </div>
 </div>
 <script>
 var age = document.querySelector('#input2');
 var gender = document.querySelector('#input3');
 var height = document.querySelector('#input4');
 var weight = document.querySelector('#input5');
-//var activity = document.querySelector('#input6');
+var activity = document.querySelector('#input6');
 
-console.log(1);
+var d1=document.querySelector('.cal');
+var p1=document.querySelector('.bprotein');
+var f1=document.querySelector('.bfat');
+var c1=document.querySelector('.bcarbs');
+var p2=document.querySelector('.hprotein');
+var f2=document.querySelector('.hfat');
+var c2=document.querySelector('.hcarbs');
+var p3=document.querySelector('.lfprotein');
+var f3=document.querySelector('.lffat');
+var c3=document.querySelector('.lfcarbs');
+
+//-----------------------------------------------------------------
 function handleSubmit(){
  
-  console.log(4);
   age=parseInt(age.value);
   height=parseInt(height.value);
   weight=parseInt(weight.value);
-
-
-  console.log(typeof(age));
+  activity=parseInt(activity.value);
 
   console.log(gender.value);
 
-
-  fetch('https://fitness-calculator.p.rapidapi.com/macrocalculator?age='+age+'&gender='+gender.value+'&height='+height+'&weight='+weight+'&activitylevel=5&goal=extremelose', {
+  fetch('https://fitness-calculator.p.rapidapi.com/macrocalculator?age='+age+'&gender='+gender.value+'&height='+height+'&weight='+weight+'&activitylevel='+activity+'&goal=extremelose', {
 	"method": "GET",
 	"headers": {
 		"x-rapidapi-key": "ee57f911c9msh54de0a6c51c79a3p153facjsn8e9674e30bb6",
@@ -109,19 +152,16 @@ function handleSubmit(){
 .then(response => response.json())
 .then(data=>{
     console.log(data);
-  /*  var i0=data.data[0].aqi;
-    var i1=data.data[0].co;
-    var i2=data.data[0].no2;
-    var i3=data.data[0].o3;
-    var i6=data.data[0].so2;
-
-    input0.innerHTML=" : "+i0+ " ppm";
-    input1.innerHTML=" : "+i1+ " ppm";
-    input2.innerHTML=" : "+i2+ " ppm";
-    input3.innerHTML=" : "+i3+ " ppm";
-    input6.innerHTML=" : "+i6+" ppm";
-
-*/
+    d1.innerHTML="Calories intake : "+data.calorie+ " gms";
+    p1.innerHTML=data.balanced.protein+" gms";
+    f1.innerHTML=data.balanced.fat+ " gms";
+    c1.innerHTML=data.balanced.carbs+ " gms";
+    p2.innerHTML=data.highprotein.protein+" gms";
+    f2.innerHTML=data.highprotein.fat+ " gms";
+    c2.innerHTML=data.highprotein.carbs+ " gms";
+    p3.innerHTML=data.lowfat.protein+" gms";
+    f3.innerHTML=data.lowfat.fat+ " gms";
+    c3.innerHTML=data.lowfat.carbs+ " gms";
 })
 
 }
