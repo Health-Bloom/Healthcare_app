@@ -5,9 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Heath Bloom</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
-        integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/home.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">    <link rel="stylesheet" href="/css/home.css">
 </head>
 
 <body class="d-flex text-center text-white bg-dark">
@@ -18,9 +16,13 @@
                 <!-- <nav class="nav nav-masthead justify-content-center float-md-right"> -->
                 <nav class="nav nav-masthead justify-content-center">
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    <a class="nav-link" href="/Contributes">Login</a>
-                    <a class="nav-link" href="/HealthCheckup">Register</a>
-                    <a class="nav-link" href="/Pollution">Logout</a>
+                    <% if(!currentUser) {%>
+                    <a class="nav-link" href="/login">Login</a>
+                    <a class="nav-link" href="/register">Register</a>
+                    <% } else {%>
+                    <a class="nav-link text-warning font-weight-bold" href="#"><%= currentUser.username %></a>
+                    <a class="nav-link" href="/logout">Logout</a>
+                    <% } %>
                 </nav>
             </div>
         </header>
