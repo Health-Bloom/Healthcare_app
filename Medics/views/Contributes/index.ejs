@@ -34,7 +34,7 @@
                     <input class="searchButton px-3 p-1" type="submit" value="Search" class="btn-sm">
             </form>
            <div class="row pt-5">             
-                    <div class="shadow border p-3 mb-3 border-success bg-light bg-gradient text-success" style="overflow-x:auto;">
+              <div class="shadow border p-3 mb-3 border-success bg-light bg-gradient text-success" style="overflow-x:auto;">
                 <table class="table table-hover" >
                     <thead>
                       <tr>
@@ -50,11 +50,21 @@
                         <% for(let Contribute of Contributes) { %>
                       <tr>
                         <th scope="row"><%=i%></th>
-                        <td>  <h3><%= Contribute.name %></h3></td>
-                        <td><p><%= Contribute.emailEntry %> <a class="mail" href="mailto:<%= Contribute.emailEntry %>" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                        <td>  <h3><a href="#"><%= Contribute.author.username %></a></h3></td>
+                        <td><p><%= Contribute.author.email %> <a class="mail" href="mailto:<%= Contribute.author.email %>" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
                             <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/>
                           </svg></a></p></td>
-                        <td><%= Contribute.medname %></td>
+                        <td><%= Contribute.medname %>
+                            <%  if( currentUser && Contribute.author.equals(currentUser._id))  {%>
+                                    <form class="d-inline" action="/Contributes/<%=Contribute._id%>?_method=DELETE" method="POST">
+                                        <button class="btn btn-outline-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                          </svg></button>
+                                    </form>
+                                <% } %>
+                        </td>
                         <td><%= Contribute.medAmount %></td>
                       </tr>
                       <% i++;}%>
@@ -68,16 +78,7 @@
                     <a class="btn btn-warning mt-2" href="/Contributes/new">Contribute</a>
                     <% } %>
                 </div>
-                </div>
-                <!--<% for(let Contribute of Contributes) { %>
-                <div class="col-md-4">
-                    <div class="card mt-3 shadow p-3 mb-4 border-success bg-light bg-gradient text-success">
-                        <h1><%= Contribute.name %></h1>
-                        <p>Contact - <%= Contribute.emailEntry %></p>
-                        <p class="btn btn-outline-primary d-flex justify-content-center lead">Medicine > <%= Contribute.medname %></p>
-                    </div>
-                </div>
-                <% }%>-->
+              </div>
            </div>
      </div>
   
