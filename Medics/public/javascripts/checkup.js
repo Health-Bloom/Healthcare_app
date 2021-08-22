@@ -1,10 +1,4 @@
 
-var age = document.querySelector('#input2');
-var gender = document.querySelector('#input3');
-var height = document.querySelector('#input4');
-var weight = document.querySelector('#input5');
-var activity = document.querySelector('#input6');
-
 var box1=document.querySelector('#box1');
 var box2=document.querySelector('#box2');
 var box3=document.querySelector('#box3');
@@ -87,7 +81,7 @@ var c2=document.querySelector('.hcarbs');
     var height = document.querySelector('#input4');
     var weight = document.querySelector('#input5');
     var activity = document.querySelector('#input6');
-    
+
     box3.style.display="inline-block";
      age=parseInt(age.value);
      height=parseInt(height.value);
