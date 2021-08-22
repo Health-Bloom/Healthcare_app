@@ -1,0 +1,40 @@
+body{
+    background-color: rgb(182, 248, 231);
+}
+  .container{
+    padding: 5px;
+    margin:0px
+  }
+.display_right .first{
+  border-radius: 20px;
+  position:relative;
+  width:50%;
+  left:60%;
+  margin-bottom: 20px;
+  background-image: linear-gradient(to bottom right,rgb(197, 117, 250),rgb(224, 210, 241));
+  box-shadow: 5px 10px 30px;
+  display: none;
+  transition: all 0.03s ease;
+
+
+}
+.display_right .second{
+  border-radius: 20px;
+  position:relative;
+  width:50%;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  background-image: linear-gradient(to bottom right,rgb(189, 99, 248),rgb(221, 208, 238));
+  box-shadow: 5px 10px 30px;
+  display: none;
+  transition: all 0.3s ease;
+
+}
+.display_left{
+  width:50%;
+
+}
+.display_right{
+  width:50%;
+
+}
