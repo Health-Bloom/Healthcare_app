@@ -7,7 +7,6 @@ const path = require('path');
 const methodOverride = require('method-override')
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
-// const catchAsync = require('./errorHandling/catchAsync');
 const ExpressError = require('./errorHandling/ExpressError');
 const mongoose = require('mongoose');
 const session = require('express-session');
@@ -23,10 +22,10 @@ const userRoutes = require('./routes/userRoutes');
 
 mongoose.connect('mongodb://localhost:27017/Medics', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
-        console.log("MONGO CONNECTION OPEN!!!")
+        console.log("Database connected")
     })
     .catch(err => {
-        console.log("OH NO MONGO CONNECTION ERROR!!!!")
+        console.log("Database connection error!!")
         console.log(err)
     })
 
