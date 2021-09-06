@@ -19,7 +19,7 @@
           <a class="nav-link" href="/earthquakes">Earthquakes</a>
         </li>
       </ul>
-      <div class="navbar-nav">
+      <div class="navbar-nav logged_state ">
         <% if(!currentUser) {%>
           <a class="nav-link" href="/login">Login</a>
           <a class="nav-link" href="/register">Register</a>
@@ -31,5 +31,19 @@
     </div>
   </div>
 </nav>
+<style>
+  @media (min-width: 991px) {
+  .logged_state{
+   position: absolute;
+   right:0px
+  }
+  .logged_state a {
+  border-radius: 5px;
+  background-color: rgb(66, 64, 64);
+  margin-left: 5px;
+}
+}
+
+</style>
 
 <%- include('./flash.ejs')%>
