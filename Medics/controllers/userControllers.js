@@ -1,5 +1,7 @@
 const User = require('../models/userSchema');
 
+const Contribute = require('../models/contributeSchema');
+
 module.exports.registerForm = (req, res) => {
     res.render('usersAuth/register')
 }
@@ -11,7 +13,7 @@ module.exports.newUser = async(req, res) => {
         const registeredUser = await User.register(user, password);
         req.login(registeredUser, err => {
             if (err) return next(err);
-            req.flash('success', 'You are registered!');
+            req.flash('success', 'You are registered as ' + username);
             res.redirect('/Contributes');
         })
     } catch (e) {
@@ -25,7 +27,7 @@ module.exports.loginForm = (req, res) => {
 }
 
 module.exports.userLogin = (req, res) => {
-    req.flash('success', 'You have logged in!');
+    req.flash('success', 'You have logged in as ' + req.body.username);
     const redirectUrl = req.session.returnTo || '/Contributes';
     delete req.session.returnTo;
     res.redirect(redirectUrl);
@@ -34,7 +36,7 @@ module.exports.userLogin = (req, res) => {
 module.exports.userLogout = (req, res) => {
     req.logout();
     req.flash('success', "You have logged out!");
-    res.redirect('/')
+    res.redirect('/Contributes')
 }
 
 // USER PROFILE
@@ -45,16 +47,16 @@ module.exports.userDetails = (req, res) => {
             req.flash("error", "Something went wrong.");
             return res.redirect("/");
           }
-          Contribute.find().where('author.id').equals(foundUser._id).exec(function(err, Contributes) {
+          Contribute.find().where('author').equals(foundUser._id).exec(function(err, Contributes) {
             if(err) {
               req.flash("error", "Something went wrong.");
               return res.redirect("/");
             }
-            res.render("users/show", {user: foundUser, Contributes: Contributes});
-        })
-    });
-}
-
+            res.render("user/show", {user: foundUser, Contributes: Contributes});
+            // res.render("user/show", {user: foundUser});
+          })
+        });
+    }
 
 module.exports.editUserDetails = (req, res) => {
         User.findById(req.params.id, function(err, foundUser) {
@@ -62,7 +64,7 @@ module.exports.editUserDetails = (req, res) => {
             req.flash("error", "Something went wrong.");
             return res.redirect("/");
           }
-          Contribute.find().where('author.id').equals(foundUser._id).exec(function(err, Contributes) {
+          Contribute.find().where('author').equals(foundUser._id).exec(function(err, Contributes) {
             if(err) {
               req.flash("error", "Something went wrong.");
               return res.redirect("/");
@@ -71,4 +73,63 @@ module.exports.editUserDetails = (req, res) => {
         })
     });
 }
+
+//Middle Ware Obj to add to middleware file
+ 
+// middlewareObj.checkProfileOwnership = function (req, res, next) {
+//   //if user is logged in
+//   if (req.isAuthenticated()) {
+//       User.findById(req.params.id, function (err, foundUser) {
+//           if (err || !foundUser) {
+//               req.flash('error', 'Something Went Wrong!');
+//               res.redirect('back');
+//           } else {
+//                //if user is logged in, do they own the profile?
+//               if (foundUser.equals(req.user._id)) {
+//                   next();
+//               } else {
+//                   //otherwise redirect
+//                   req.flash('error', "You don't have permission to do that.");
+//                   res.redirect('back');
+//               };
+//           };
+//       });
+//   } else {
+//       //if not, redirect.
+//       req.flash('error', "You need to be logged in to do that.");
+//       res.redirect('back');
+//   };
+
+// };
+
+// //So now users who don't own the profile can't edit it, and to hide the edit button:
+
+// <% if(currentUser && currentUser._id.equals(user._id)) { %>
+// INSERT LINK TO EDIT PROFILE PAGE
+// <%   } %>
+
+
+
+// //USER EDIT ROUTE
+// router.get('/users/:id/edit', middleware.checkProfileOwnership, function (req, res) {
+//   User.findById(req.params.id, function (err, foundUser) {
+//       if(err) {
+//           req.flash('error', 'Something Went Wrong!');
+//           return res.redirect('/campgrounds');
+//       }
+//       res.render('users/edit', {user: foundUser});
+//   });
+// });
+
+// //USER UPDATE ROUTE
+// router.put('/users/:id', middleware.checkProfileOwnership, function (req, res) {
+//   User.findByIdAndUpdate(req.params.id, req.body.user, function (err, updatedUser) {
+//       if (err) {
+//           res.redirect('back');
+//       } else {
+//           req.flash('success', 'Profile Updated!')
+//           res.redirect('/users/' + req.params.id);
+//       };
+//   });
+// });
 

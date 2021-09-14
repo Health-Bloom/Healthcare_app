@@ -2,31 +2,41 @@
 
 <%- include('../base/navbar')%>
 
+<div class="mt-4 container border rounded border-dark shadow p-3">
 <div class="row">
-	<div class="col-md-4">
-			<h1><%= user.username %></h1>
-		<div class="thumbnail">
-			<%if(Contribute.images.length) {%>
-				<img class="img-fluid" style="border-radius: 20px;" alt="" src="<%=Contribute.images[0].url%>">
-				<% }else {%>
-				<img class="img-fluid" style="border-radius: 20px;" alt=""
-					src="">
-				<% } %>
-			<img src="<%= user.avatar %>" alt="user profile image">
-			<div class="caption"><a href="mailto:<%= user.email %>"><%= user.email %></a></div>
+	<div class="col-md-5 text-center">
+		<div class="profile">
+			<img class="img-fluid" style="border-radius: 20px;" 
+			src="https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png" 
+			alt="user profile image">
+			<div class="border bg-light rounded my-2 py-2">
+				<h1 class="text-center"><%= user.username %></h1>
+				<h4 class="caption">Email : <a class="btn btn-sm btn-outline-success" href="mailto:<%= user.email %>" target="_blank"><%= user.email %></a></h4>
+				<a href="#"><button class="btn btn-info">Edit Profile</button></a>
+				<a href="#"><button class="btn btn-outline-danger">Delete Account</button></a>
+			</div>
 		</div>
 
         <!-- <div class="border border-primary shadow" id='map' ></div> -->
 
 	</div>
-	<div class="col-md-8">
-		<h3><%= user.username %>'s Medicine:</h3>
-		<ul>
-		<% Contributes.forEach(function(Contribute) { %>
-			<li><%= Contribute.medname %></li>
-		<% }); %>
-		</ul>
+	<div class="col-md-7 text-center">
+		<h1>Medicines contributed</h1>
+		<div class="border rounded my-3 bg-light pt-2">
+			<% for(let Contribute of Contributes) {%>
+				<h3><%= Contribute.medAmount %> <%= Contribute.medname %></h3>
+			<% }; %>
+		</div>
 	</div>
+</div>
 </div>
 
 <%- include('../base/footer')%>
+
+<!-- user.avatar  -->
+<!-- if(Contribute.images.length) 
+	<img class="img-fluid" style="border-radius: 20px;" alt="" src="Contribute.images[0].url%>">
+	 }else 
+	<img class="img-fluid" style="border-radius: 20px;" alt=""
+		src="">
+	 } -->

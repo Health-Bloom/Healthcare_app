@@ -18,8 +18,8 @@ router.get('/logout', user.userLogout);
 
 // USER PROFILE
 
-router.get("/users/:id", catchAsync(user.userDetails));
+router.get("/user/:id", user.userDetails);
 
-router.get("/users/:id/edit", catchAsync(user.editUserDetails));
+router.get("/user/:id/edit", user.editUserDetails);
 
 module.exports = router;
