@@ -1,57 +1,73 @@
+<!-- google button -->
+<meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+<!-- google button -->
 
-<!-- Button trigger modal -->
-<button><a href="#" id="button" class="button">Click Me</a></button>
-<link rel="stylesheet" href="/css/user.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">        
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>        
-
-<div class="bg-modal">
-		<div class="row col-md-3 ">
-			<div class="close pull-right"><i class="fas fa-times fa-2x"></i></div>
-		 <form  method="POST" class="validated-form login_form bg-light shadow border border-grey text-center" novalidate>
-		<div >
-			
-					<h2 class="text-center">Login to your Account</h2>
-					
-				</div>
-				<img class="img-fluid" style="border-radius: 15px;" alt="" src="https://images.unsplash.com/photo-1580115465903-0e4a824a4e9a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80">
-				
-			<div class="mb-3 mt-3">
-				<input class="form-control" type="text" id="username" name="username" placeholder="Enter your Username"required>
-				<div class="valid-feedback">
-					Looks good!
-				</div>
-			</div>
-		
-			<div class="mb-3">
-				<input class="form-control" type="password" id="password" name="password" placeholder="Enter the password"required>
-				<div class="valid-feedback">
-					Looks good!
-				</div>
-			</div>
-			
-				<p><button class="btn btn-warning submit col-md-12" >Login</button></p>
-				<div class="or-container">
-					<div class="line-separator"></div>
-					<div class="or-label">or</div>
-					<div class="line-separator"></div>
-				</div>
-				
-			</form>
-			<button class="btn btn-google btn-outline col-md-12 shadow border" href="#"><img src="https://img.icons8.com/color/16/000000/google-logo.png"> Signup Using Google</button>
-				<p class="reg_message mt-4 text-center" >Not <a class="reg_link" href="/register">registered</a> yet?</p>
-		</div>
-	
-
+<div class="modal fade" style="border-radius: 15px;" id="staticBackdrop" data-bs-backdrop="static" 
+data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="text-center">
+        <h2><button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-skip-backward" viewBox="0 0 16 16">
+			<path d="M.5 3.5A.5.5 0 0 1 1 4v3.248l6.267-3.636c.52-.302 1.233.043 1.233.696v2.94l6.267-3.636c.52-.302 1.233.043 1.233.696v7.384c0 .653-.713.998-1.233.696L8.5 8.752v2.94c0 .653-.713.998-1.233.696L1 8.752V12a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5zm7 1.133L1.696 8 7.5 11.367V4.633zm7.5 0L9.196 8 15 11.367V4.633z"/>
+		  </svg></button> Login</h2>
+      </div>
+      <div class="modal-body">
+        <form action="/login" method="POST" class="validated-form login_form text-center" novalidate>
+          <div >                
+              </div>
+              <img class="img-fluid" style="border-radius: 15px;" alt="" src="https://images.unsplash.com/photo-1580115465903-0e4a824a4e9a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80">
+              
+            <div class="mb-3 mt-3">
+              <input class="form-control" type="text" id="username" name="username" placeholder="Enter your Username"required>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+          
+            <div class="mb-3">
+              <input class="form-control" type="password" id="password" name="password" placeholder="Enter the password"required>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+            
+              <p><button class="btn btn-warning submit col-md-12" >Login</button></p>
+              <div class="or-container">
+                <div class="line-separator"></div>
+                <div class="or-label">or</div>
+                <div class="line-separator"></div>
+              </div>
+              
+            </form>
+			<div class="text-center d-flex justify-content-center" id="my-signin2"></div>
+              <p class="reg_message mt-4 text-center" >Not <a class="reg_link" href="/register">registered</a> yet?</p>     
+      </div>
+    </div>
+  </div>
 </div>
 
-<script>
-    document.getElementById('button').addEventListener("click", function() {
-	document.querySelector('.bg-modal').style.display = "flex";
-});
+<!-- google button -->
 
-document.querySelector('.close').addEventListener("click", function() {
-	document.querySelector('.bg-modal').style.display = "none";
-});
-</script>
+  <script>
+    function onSuccess(googleUser) {
+      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+    }
+    function onFailure(error) {
+      console.log(error);
+    }
+    function renderButton() {
+      gapi.signin2.render('my-signin2', {
+        'scope': 'profile email',
+        'width': 240,
+        'height': 50,
+        'longtitle': true,
+        'theme': 'dark',
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+      });
+    }
+  </script>
+
+  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+  
+<!-- google button -->

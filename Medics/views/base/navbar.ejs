@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="/css/user.css">
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand text-info" href="/">Med-Tech</a>
@@ -21,7 +23,11 @@
       </ul>
       <ul class="navbar-nav logged_state ">
         <% if(!currentUser) {%>
-          <a class="nav-link" id="modalTrigger" href="/login">Login</a>
+          <a class="nav-link" 
+          type="button" 
+          class="btn btn-primary" 
+          data-bs-toggle="modal" 
+          data-bs-target="#staticBackdrop">Login</a>
           <a class="nav-link text-primary" href="/register">Register</a>
           <% } else {%>
           <a class="nav-link text-warning font-weight-bold" href="/user/<%= currentUser.id %>"><%= currentUser.username %></a>
@@ -34,7 +40,12 @@
 
 <!--LOGIN-->
 
-<!------------------------------------------------------------------------------------------------->
+<%- include('../usersAuth/login')%>
+
+<!--REGISTER-->
+
+ <!-- include('../usersAuth/register') -->
+
 <style>
   @media (min-width: 1024px) {
   .logged_state{
@@ -56,17 +67,12 @@
 
 <%- include('./flash.ejs')%>
 
-
 <script>
-$("#modalTrigger").click(function(event) {
-  event.preventDefault();
-  $.ajax({
-      type: "GET",
-      url: "/login" // Modify the url according to your application logic
-  }).done(function(yourData) {
-      // Now open the modal! (Assuming you are using bootstrap.js)
-      $("#bg-modal").modal("show");
-      // If you used 'res.json' then you can use yourData here
-  });
-})
+document.getElementById('button').addEventListener("click", () => {
+document.querySelector('.bg-modal').style.display = "flex";
+});
+
+document.querySelector('.close').addEventListener("click", () => {
+document.querySelector('.bg-modal').style.display = "none";
+});
 </script>

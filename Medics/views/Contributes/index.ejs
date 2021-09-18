@@ -75,7 +75,15 @@
                     <% if(noMatch !== null) { %>
                     <h4><%= noMatch %></h4>
                     <a class="btn btn-info mt-2" href="/Contributes">Other Medicines</a>
-                    <a class="btn btn-warning mt-2" href="/Contributes/new">Contribute</a>
+                    <a class="btn btn-warning mt-2" 
+                      <%  if( currentUser )  {%>
+                      href="/Contributes/new"
+                      <% } else { %>
+                        type="button" 
+                        class="btn btn-primary" 
+                        data-bs-toggle="modal" 
+                        data-bs-target="#staticBackdrop"
+                        <% } %>>Contribute</a>
                     <% } %>
                 </div>
               </div>
@@ -93,9 +101,28 @@
         <h2 class="display_text"><i class="fas fa-hand-holding-medical text-danger"></i> Help others by Contributing</h2>
         <div class="container text-center rounded">
             <p>Contribute your left out medicines to save others lives</p>
-            <p><a class="btn btn-warning mt-2" href="/Contributes/new">Contribute</a></p>
+            <p><a class="btn btn-warning mt-2" 
+              <%  if( currentUser )  {%>
+              href="/Contributes/new"
+              <% } else { %>
+                type="button" 
+                class="btn btn-primary" 
+                data-bs-toggle="modal" 
+                data-bs-target="#staticBackdrop"
+                <% } %>>Contribute</a></p>
         </div>
     </div>
 </div>
 </body>
+
+
+<!--LOGIN-->
+
+<%- include('../usersAuth/login')%>
+
+<!--REGISTER-->
+
+<!-- include('../usersAuth/register') -->
+
+
     <%- include('../base/footer')%>
