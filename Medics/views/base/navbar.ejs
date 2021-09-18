@@ -21,7 +21,7 @@
       </ul>
       <ul class="navbar-nav logged_state ">
         <% if(!currentUser) {%>
-          <a class="nav-link" href="/login">Login</a>
+          <a class="nav-link" id="modalTrigger" href="/login">Login</a>
           <a class="nav-link text-primary" href="/register">Register</a>
           <% } else {%>
           <a class="nav-link text-warning font-weight-bold" href="/user/<%= currentUser.id %>"><%= currentUser.username %></a>
@@ -31,6 +31,10 @@
     </div>
   </div>
 </nav>
+
+<!--LOGIN-->
+
+<!------------------------------------------------------------------------------------------------->
 <style>
   @media (min-width: 1024px) {
   .logged_state{
@@ -51,3 +55,18 @@
 </style>
 
 <%- include('./flash.ejs')%>
+
+
+<script>
+$("#modalTrigger").click(function(event) {
+  event.preventDefault();
+  $.ajax({
+      type: "GET",
+      url: "/login" // Modify the url according to your application logic
+  }).done(function(yourData) {
+      // Now open the modal! (Assuming you are using bootstrap.js)
+      $("#bg-modal").modal("show");
+      // If you used 'res.json' then you can use yourData here
+  });
+})
+</script>
