@@ -1,39 +1,89 @@
 <%- include('../base/header')%>
 
-<%- include('../base/navbar')%>
 
-<div class="mt-4 container border rounded border-dark shadow p-3">
+<div class="display">
+	<h2 class="username">
+		Hey there, <%= user.username %>!
+	</h2>
+<div class="mt-4 container border-dark shadow p-3">
 <div class="row">
-	<div class="col-md-5 text-center">
+	<div class="col text-center">
 		<div class="profile">
-			<img class="img-fluid" style="border-radius: 20px;" 
+			<img class="img-fluid" style="border-radius: 20px; width:90%;" 
 			src="https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png" 
 			alt="user profile image">
-			<div class="border bg-light rounded my-2 py-2">
-				<h1 class="text-center"><%= user.username %></h1>
-				<h4 class="caption">Email : <a class="btn btn-sm btn-outline-success" href="mailto:<%= user.email %>" target="_blank"><%= user.email %></a></h4>
-				<a href="#"><button class="btn btn-info">Edit Profile</button></a>
-				<a href="#"><button class="btn btn-outline-danger">Delete Account</button></a>
-			</div>
 		</div>
-
+		<div class="m-2">
+		<a href="#"><button class="btn btn-info">Edit Profile</button></a>
+		<a href="#"><button class="btn btn-outline-danger">Delete Account</button></a>
+		</div>
+	</div>
         <!-- <div class="border border-primary shadow" id='map' ></div> -->
 
+	<div class="col">
+	<div class="col-md-6 p-2">
+		<h3>Name : <%= user.username %></h3>
+		<h4 class="caption">Email : <a class="btn btn-sm btn-outline-success" href="mailto:<%= user.email %>" target="_blank"><%= user.email %></a></h4>
+		
 	</div>
-	<div class="col-md-7 text-center">
-		<h1>Medicines contributed</h1>
-		<div class="border rounded my-3 bg-light pt-2">
-			<% for(let Contribute of Contributes) {%>
-				<h3><%= Contribute.medAmount %> <%= Contribute.medname %></h3>
-			<% }; %>
+	<br>
+	<div class="col-md-12">
+		
+		<div class="border rounded text-center p-2 bg-light">
+			<h3>Contribution details</h3>
+			<table class="table table-hover" >
+				<thead>
+				  <tr>
+					<th scope="col">Medicine</th>
+					<th scope="col">amount left</th>
+					<th scope="col">Date</th>
+				  </tr>
+				  </thead>
+				  <tbody>
+					<% for(let Contribute of Contributes) {%>
+					<tr>
+						<td>
+							<p><%= Contribute.medAmount %> <%= Contribute.medname %></p>
+						</td>
+						<td>
+							<!-- STATIC VALUES-->
+							10
+						</td>
+						<td>
+							<!-- STATIC VALUES-->
+							10
+						</td>
+					</tr>
+					<% }; %>
+				  </tbody>
+			</table>
 		</div>
 	</div>
+	</div>
 </div>
 </div>
-
-<%- include('../base/footer')%>
-
-<!-- user.avatar  -->
+<style>
+	.display{
+		background-color: rgb(8, 102, 91);
+		height:25%;
+		width: 100%;
+		position:absolute;
+	}
+	.display .username{
+		color: white;
+		font-family: 'Times New Roman', Times, serif;
+		margin-left: 8%;
+		margin-top: 3%;
+	}
+	.container{
+		background-color: rgb(192, 228, 224);
+		position:relative;
+		margin-top: 20%;
+		border-radius: 10px;
+	}
+</style>
+<!-- user.avatar 
+ -->
 <!-- if(Contribute.images.length) 
 	<img class="img-fluid" style="border-radius: 20px;" alt="" src="Contribute.images[0].url%>">
 	 }else 

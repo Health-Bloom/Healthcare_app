@@ -27,8 +27,17 @@
           type="button" 
           class="btn btn-primary" 
           data-bs-toggle="modal" 
-          data-bs-target="#staticBackdrop">Login</a>
-          <a class="nav-link text-primary" href="/register">Register</a>
+          data-bs-target="#loginModal">Login</a>
+
+          
+          <a class="nav-link text-primary"
+          type="button" 
+          class="btn btn-primary" 
+          data-bs-toggle="modal" 
+          data-bs-target="#registerModal">Register</a>
+
+         
+
           <% } else {%>
           <a class="nav-link text-warning font-weight-bold" href="/user/<%= currentUser.id %>"><%= currentUser.username %></a>
           <a class="nav-link" href="/logout">Logout</a>
@@ -39,12 +48,12 @@
 </nav>
 
 <!--LOGIN-->
-
 <%- include('../usersAuth/login')%>
+
 
 <!--REGISTER-->
 
- <!-- include('../usersAuth/register') -->
+ <%- include('../usersAuth/register')%>
 
 <style>
   @media (min-width: 1024px) {
@@ -66,13 +75,3 @@
 </style>
 
 <%- include('./flash.ejs')%>
-
-<script>
-document.getElementById('button').addEventListener("click", () => {
-document.querySelector('.bg-modal').style.display = "flex";
-});
-
-document.querySelector('.close').addEventListener("click", () => {
-document.querySelector('.bg-modal').style.display = "none";
-});
-</script>

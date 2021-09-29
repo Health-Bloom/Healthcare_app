@@ -1,57 +1,76 @@
-<%- include('../base/header')%>
+<!-- google button -->
+<head>
+  <meta name="google-signin-client_id" content="820536288377-i7eqf8tecadn9j488a3i0g5is5i92gfj.apps.googleusercontent.com">
+</head>
+<!-- google button -->
 
-<%- include('../base/navbar')%>
-
-<link rel="stylesheet" href="/css/user.css">
-
-<div class="row">
-<h1 class="text-center py-4">Register</h1>
-<div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
-    <form action="/register" method="POST" class="validated-form reg_form bg-light shadow border border-grey text-center" novalidate>
-    <img class="img-fluid" style="border-radius: 15px;"  alt="" src="https://images.unsplash.com/photo-1485848395967-65dff62dc35b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=749&q=80">
-    <!-- <div class="mb-3">
-        <div class="form-file custom-file">
-            <input type="file" class="form-file-input" id="image" name="image" multiple>
-            <label class="form-file-label" for="image">
-                <span class="form-file-text custom-file-label">Choose image(s)...</span>
-                <span class="form-file-button bg-primary text-white">Browse</span>
-            </label>
+<div class="modal fade" id="registerModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Register</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-    </div> -->
-    <div class="mb-3 mt-3">
-        <label class="form-label font-weight-bold" for="username">Username</label>
-        <input class="form-control" type="text" id="username" name="username" required>
-        <div class="valid-feedback">
-            Looks good!
+       
+          <form action="/register" method="POST" class="validated-form reg_form text-center" novalidate>
+            <img class="img-fluid" style="border-radius: 15px;width: 90%;"  src="https://images.unsplash.com/photo-1485848395967-65dff62dc35b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=749&q=80">
+          
+            <div class="mb-3 mt-3">
+                <input class="form-control" type="text" placeholder="Username"id="username" name="username" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+        
+            <div class="mb-3">
+              <input class="form-control" type="password" id="email" name="email" placeholder="Enter your Email" required>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+            <div class="mb-3">
+              <input class="form-control" type="password" id="password" name="password" placeholder="Enter the password"required>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+              <p><button class="btn btn-success submit col-md-12" >Register</button></p>
+      
+        <div class="or-container">
+          <div class="line-separator"></div>
+          <div class="or-label">or</div>
+          <div class="line-separator"></div>
         </div>
+        
+      </form>
+           <div id="my-signin"></div>
+            <p class="reg_message mt-3 text-center" ><a class="login_link" href="/login">Login</a> if you are already registered</p>
+            
+            </div>               
+           </div>
+      </div>
     </div>
-    <!-- <div class="mb-3">
-        <label class="form-label font-weight-bold" for="location">Location</label>
-        <input class="form-control" type="text" id="location" name="location" required>
-        <div class="valid-feedback">
-            Looks good!
-        </div>
-    </div> -->
-    <div class="mb-3">
-        <label class="form-label font-weight-bold" for="email">Email</label>
-        <input class="form-control" type="email" id="email" name="email" required>
-        <div class="valid-feedback">
-            Looks good!
-        </div>
-    </div>
-    <div class="mb-3">
-        <label class="form-label font-weight-bold" for="password">Password</label>
-        <input class="form-control" type="password" id="password" name="password" required>
-        <div class="valid-feedback">
-            Looks good!
-        </div>
-    </div>
-    <center>
-    <button class="btn btn-success mb-1 mt-4 text-center btn-block" style="border-radius: 10px;">Register</button>
-    </center>
-</form>
-<p class="reg_message mt-5 text-center" ><a class="login_link" href="/login">Login</a> if you are already registered</p>
-</div>
-</div>
+  </div>
 
-<%- include('../base/footer')%>
+  
+  <script>
+    function onSuccess(googleUser) {
+      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+    }
+    function onFailure(error) {
+      console.log(error);
+    }
+    function renderButton1() {
+      gapi.signin.render('my-signin2', {
+        'scope': 'profile email',
+        'width': 240,
+        'height': 50,
+        'longtitle': true,
+        'theme': 'dark',
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+      });
+    }
+  </script>
+
+<script src="https://apis.google.com/js/platform.js?onload=renderButton1" async defer></script>
