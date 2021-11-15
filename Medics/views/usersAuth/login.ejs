@@ -1,13 +1,9 @@
-<!-- google button -->
-<meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
-<!-- google button -->
-
 <div class="modal fade" style="border-radius: 15px;" id="loginModal" data-bs-backdrop="static" 
 data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title text-center" id="staticBackdropLabel">Login to your account</h5>
+        <h5 class="modal-title fw-bold" id="staticBackdropLabel">Login to your account</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -38,35 +34,8 @@ data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" ari
               </div>
               
             </form>
-			<div class="text-center border justify-content-center" id="my-signin2"></div>
               <p class="reg_message mt-4 text-center" >Not <a class="reg_link" href="/register">registered</a> yet?</p>     
       </div>
     </div>
   </div>
 </div>
-
-<!-- google button -->
-
-  <script>
-    function onSuccess(googleUser) {
-      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-    }
-    function onFailure(error) {
-      console.log(error);
-    }
-    function renderButton() {
-      gapi.signin2.render('my-signin2', {
-        'scope': 'profile email',
-        'width': 'auto',
-        'height': 45,
-        'longtitle': true,
-        'theme': 'dark',
-        'onsuccess': onSuccess,
-        'onfailure': onFailure
-      });
-    }
-  </script>
-
-  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
-  
-<!-- google button -->

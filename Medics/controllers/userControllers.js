@@ -9,8 +9,13 @@ module.exports.registerForm = (req, res) => {
 module.exports.newUser = async(req, res) => {
     try {
         const { email, username, password } = req.body;
-        const user = new User({ email, username });
+        const { path, filename } = req.files;
+        images = req.files.map(f => ({ url: f.path, filename: f.filename }));
+        const user = new User({ email, username, images });
+        // user.images = { path, filename };
         const registeredUser = await User.register(user, password);
+        console.log(user);
+        console.log(user.images);
         req.login(registeredUser, err => {
             if (err) return next(err);
             req.flash('success', 'You are registered as ' + username);
@@ -20,6 +25,7 @@ module.exports.newUser = async(req, res) => {
         req.flash('error', e.message);
         res.redirect('register');
     }
+    // res.send("it worked");
 }
 
 module.exports.loginForm = (req, res) => {
@@ -36,7 +42,7 @@ module.exports.userLogin = (req, res) => {
 module.exports.userLogout = (req, res) => {
     req.logout();
     req.flash('success', "You have logged out!");
-    res.redirect('/Contributes')
+    res.redirect('/')
 }
 
 // USER PROFILE
@@ -73,42 +79,6 @@ module.exports.editUserDetails = (req, res) => {
         })
     });
 }
-
-//Middle Ware Obj to add to middleware file
- 
-// middlewareObj.checkProfileOwnership = function (req, res, next) {
-//   //if user is logged in
-//   if (req.isAuthenticated()) {
-//       User.findById(req.params.id, function (err, foundUser) {
-//           if (err || !foundUser) {
-//               req.flash('error', 'Something Went Wrong!');
-//               res.redirect('back');
-//           } else {
-//                //if user is logged in, do they own the profile?
-//               if (foundUser.equals(req.user._id)) {
-//                   next();
-//               } else {
-//                   //otherwise redirect
-//                   req.flash('error', "You don't have permission to do that.");
-//                   res.redirect('back');
-//               };
-//           };
-//       });
-//   } else {
-//       //if not, redirect.
-//       req.flash('error', "You need to be logged in to do that.");
-//       res.redirect('back');
-//   };
-
-// };
-
-// //So now users who don't own the profile can't edit it, and to hide the edit button:
-
-// <% if(currentUser && currentUser._id.equals(user._id)) { %>
-// INSERT LINK TO EDIT PROFILE PAGE
-// <%   } %>
-
-
 
 // //USER EDIT ROUTE
 // router.get('/users/:id/edit', middleware.checkProfileOwnership, function (req, res) {

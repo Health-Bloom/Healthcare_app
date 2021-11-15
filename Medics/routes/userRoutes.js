@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
+const multer = require('multer');
+const { storage } = require('../userAvatar/avatar.js');
+const upload = multer({ storage });
 
 const catchAsync = require('../errorHandling/catchAsync');
 
@@ -8,11 +11,11 @@ const user = require('../controllers/userControllers');
 
 router.route('/register')
     .get(user.registerForm)
-    .post(catchAsync(user.newUser));
+    .post( upload.array('image'), catchAsync(user.newUser));
 
 router.route('/login')
     .get(user.loginForm)
-    .post(passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }), user.userLogin);
+    .post(passport.authenticate('local', { failureFlash: true, failureRedirect: '/' }), user.userLogin);
 
 router.get('/logout', user.userLogout);
 

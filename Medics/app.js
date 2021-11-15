@@ -1,5 +1,6 @@
-// if (process.env.NODE_ENV !== "production") {
-//     require('dotenv').config();
+if (process.env.NODE_ENV !== "production") {
+    require('dotenv').config();
+}
 
 const express = require('express');
 const app = express();
@@ -16,11 +17,7 @@ const User = require('./models/userSchema');
 const contributeRoutes = require('./routes/contributeRoutes');
 const userRoutes = require('./routes/userRoutes');
 
-// const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
-// const mapBoxToken = process.env.MAPBOX_TOKEN;
-// const geocoder = mbxGeocoding({ accessToken: mapBoxToken });
-
-mongoose.connect('mongodb://localhost:27017/Medics', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://localhost:27017/HealthCare', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log("Database connected")
     })
@@ -80,15 +77,6 @@ app.get('/HealthCheckup', (req, res) => {
 });
 
 app.get('/Pollution',async (req, res) => {
-    // var location = await geocoder.reverseGeocode({
-    //     query: [88.302491, 22.504070]
-    //   }).send()
-    
-    //   console.log(location.body.features);
-        // .then(response => {
-        //   // GeoJSON document with geocoding matches
-        //   const match = response.body;
-        // });
     res.render('Pollution')
 });
 

@@ -1,19 +1,20 @@
-<!-- google button -->
-<head>
-  <meta name="google-signin-client_id" content="820536288377-i7eqf8tecadn9j488a3i0g5is5i92gfj.apps.googleusercontent.com">
-</head>
-<!-- google button -->
-
 <div class="modal fade" id="registerModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Register</h5>
+          <h3 class="modal-title fw-bold" id="staticBackdropLabel">Register</h3>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
        
-          <form action="/register" method="POST" class="validated-form reg_form text-center" novalidate>
+          <form action="/register" method="POST" class="validated-form reg_form text-center" enctype="multipart/form-data" novalidate>
             <img class="img-fluid" style="border-radius: 15px;width: 90%;"  src="https://images.unsplash.com/photo-1485848395967-65dff62dc35b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=749&q=80">
+          
+            <div class="mb-3">
+              <div class="input-group mb-3 mt-3">
+                  <input type="file" class="form-control" id="image" name="image">
+                  <label class="input-group-text" for="image">Upload</label>
+              </div>
+            </div>
           
             <div class="mb-3 mt-3">
                 <input class="form-control" type="text" placeholder="Username"id="username" name="username" required>
@@ -23,7 +24,7 @@
             </div>
         
             <div class="mb-3">
-              <input class="form-control" type="password" id="email" name="email" placeholder="Enter your Email" required>
+              <input class="form-control" type="email" id="email" name="email" placeholder="Enter your Email" required>
               <div class="valid-feedback">
                 Looks good!
               </div>
@@ -34,16 +35,8 @@
                 Looks good!
               </div>
             </div>
-              <p><button class="btn btn-success submit col-md-12" >Register</button></p>
-      
-        <div class="or-container">
-          <div class="line-separator"></div>
-          <div class="or-label">or</div>
-          <div class="line-separator"></div>
-        </div>
-        
-      </form>
-           <div id="my-signin"></div>
+              <p><button class="btn btn-success submit col-md-12" >Register</button></p>  
+          </form>
             <p class="reg_message mt-3 text-center" ><a class="login_link" href="/login">Login</a> if you are already registered</p>
             
             </div>               
@@ -51,26 +44,3 @@
       </div>
     </div>
   </div>
-
-  
-  <script>
-    function onSuccess(googleUser) {
-      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-    }
-    function onFailure(error) {
-      console.log(error);
-    }
-    function renderButton1() {
-      gapi.signin.render('my-signin2', {
-        'scope': 'profile email',
-        'width': 240,
-        'height': 50,
-        'longtitle': true,
-        'theme': 'dark',
-        'onsuccess': onSuccess,
-        'onfailure': onFailure
-      });
-    }
-  </script>
-
-<script src="https://apis.google.com/js/platform.js?onload=renderButton1" async defer></script>
