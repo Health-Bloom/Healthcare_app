@@ -19,11 +19,11 @@ module.exports.newUser = async(req, res) => {
         req.login(registeredUser, err => {
             if (err) return next(err);
             req.flash('success', 'You are registered as ' + username);
-            res.redirect('/Contributes');
+            res.redirect('/');
         })
     } catch (e) {
         req.flash('error', e.message);
-        res.redirect('register');
+        // res.redirect('/');
     }
     // res.send("it worked");
 }
