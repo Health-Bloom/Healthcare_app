@@ -11,13 +11,9 @@ const user = require('../controllers/userControllers');
 
 const { validateUser } = require('../middleware');
 
-router.route('/register')
-    .get(user.registerForm)
-    .post( validateUser, upload.array('image'), catchAsync(user.newUser));
+router.route('/register').post( validateUser, upload.array('image'), catchAsync(user.newUser));
 
-router.route('/login')
-    .get(user.loginForm)
-    .post(passport.authenticate('local', { failureFlash: true, failureRedirect: '/' }), user.userLogin);
+router.route('/login').post(passport.authenticate('local', { failureFlash: true, failureRedirect: '/' }), user.userLogin);
 
 router.get('/logout', user.userLogout);
 

@@ -2,10 +2,6 @@ const User = require('../models/userSchema');
 
 const Contribute = require('../models/contributeSchema');
 
-module.exports.registerForm = (req, res) => {
-    res.render('usersAuth/register')
-}
-
 module.exports.newUser = async(req, res) => {
     try {
         const { email, username, password } = req.body;
@@ -19,12 +15,9 @@ module.exports.newUser = async(req, res) => {
         })
     } catch (e) {
         req.flash('error', e.message);
-        res.redirect('/');
+        // res.redirect('/');
+        // res.status(204).send()
     }
-}
-
-module.exports.loginForm = (req, res) => {
-    res.render('usersAuth/login')
 }
 
 module.exports.userLogin = (req, res) => {
