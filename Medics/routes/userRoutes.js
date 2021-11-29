@@ -9,9 +9,11 @@ const catchAsync = require('../errorHandling/catchAsync');
 
 const user = require('../controllers/userControllers');
 
+const { validateUser } = require('../middleware');
+
 router.route('/register')
     .get(user.registerForm)
-    .post( upload.array('image'), catchAsync(user.newUser));
+    .post( validateUser, upload.array('image'), catchAsync(user.newUser));
 
 router.route('/login')
     .get(user.loginForm)

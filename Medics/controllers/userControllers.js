@@ -9,13 +9,9 @@ module.exports.registerForm = (req, res) => {
 module.exports.newUser = async(req, res) => {
     try {
         const { email, username, password } = req.body;
-        const { path, filename } = req.files;
         images = req.files.map(f => ({ url: f.path, filename: f.filename }));
         const user = new User({ email, username, images });
-        // user.images = { path, filename };
         const registeredUser = await User.register(user, password);
-        console.log(user);
-        console.log(user.images);
         req.login(registeredUser, err => {
             if (err) return next(err);
             req.flash('success', 'You are registered as ' + username);
@@ -23,9 +19,8 @@ module.exports.newUser = async(req, res) => {
         })
     } catch (e) {
         req.flash('error', e.message);
-        // res.redirect('/');
+        res.redirect('/');
     }
-    // res.send("it worked");
 }
 
 module.exports.loginForm = (req, res) => {
@@ -34,9 +29,7 @@ module.exports.loginForm = (req, res) => {
 
 module.exports.userLogin = (req, res) => {
     req.flash('success', 'You have logged in as ' + req.body.username);
-    const redirectUrl = req.session.returnTo || '/Contributes';
-    delete req.session.returnTo;
-    res.redirect(redirectUrl);
+    res.redirect('/');
 }
 
 module.exports.userLogout = (req, res) => {
@@ -59,7 +52,6 @@ module.exports.userDetails = (req, res) => {
               return res.redirect("/");
             }
             res.render("user/show", {user: foundUser, Contributes: Contributes});
-            // res.render("user/show", {user: foundUser});
           })
         });
     }
