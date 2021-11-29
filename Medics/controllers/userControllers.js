@@ -15,7 +15,7 @@ module.exports.newUser = async(req, res) => {
         })
     } catch (e) {
         req.flash('error', e.message);
-        // res.redirect('/');
+        res.redirect('/');
         // res.status(204).send()
     }
 }
