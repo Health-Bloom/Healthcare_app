@@ -49,21 +49,21 @@ module.exports.userDetails = (req, res) => {
         });
     }
 
-module.exports.editUserDetails = (req, res) => {
-        User.findById(req.params.id, function(err, foundUser) {
-          if(err) {
-            req.flash("error", "Something went wrong.");
-            return res.redirect("/");
-          }
-          Contribute.find().where('author').equals(foundUser._id).exec(function(err, Contributes) {
-            if(err) {
-              req.flash("error", "Something went wrong.");
-              return res.redirect("/");
-            }
-            res.render("users/show", {user: foundUser, Contributes: Contributes});
-        })
-    });
-}
+// module.exports.editUserDetails = (req, res) => {
+//         User.findById(req.params.id, function(err, foundUser) {
+//           if(err) {
+//             req.flash("error", "Something went wrong.");
+//             return res.redirect("/");
+//           }
+//           Contribute.find().where('author').equals(foundUser._id).exec(function(err, Contributes) {
+//             if(err) {
+//               req.flash("error", "Something went wrong.");
+//               return res.redirect("/");
+//             }
+//             res.render("users/show", {user: foundUser, Contributes: Contributes});
+//         })
+//     });
+// }
 
 // //USER EDIT ROUTE
 // router.get('/users/:id/edit', middleware.checkProfileOwnership, function (req, res) {
