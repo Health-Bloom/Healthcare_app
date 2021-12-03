@@ -31,11 +31,11 @@ var c1=document.querySelector('.bcarbs');
 })
 .then(response => response.json())
 .then(data=>{
-    console.log(data);
-    d1.innerHTML="Calories intake : "+data.calorie+ " gms";
-    p1.innerHTML=data.balanced.protein+" gms";
-    f1.innerHTML=data.balanced.fat+ " gms";
-    c1.innerHTML=data.balanced.carbs+ " gms";
+
+    d1.innerHTML="Calories intake : "+data.data.calorie+ " gms";
+    p1.innerHTML=data.data.balanced.protein+" gms";
+    f1.innerHTML=data.data.balanced.fat+ " gms";
+    c1.innerHTML=data.data.balanced.carbs+ " gms";
    
 })
 
@@ -68,9 +68,9 @@ var c2=document.querySelector('.hcarbs');
    .then(response => response.json())
    .then(data=>{
        console.log(data);
-       p2.innerHTML=data.highprotein.protein+" gms";
-       f2.innerHTML=data.highprotein.fat+ " gms";
-       c2.innerHTML=data.highprotein.carbs+ " gms";
+       p2.innerHTML=data.data.highprotein.protein+" gms";
+       f2.innerHTML=data.data.highprotein.fat+ " gms";
+       c2.innerHTML=data.data.highprotein.carbs+ " gms";
    })
    
    }
@@ -102,9 +102,9 @@ var c3=document.querySelector('.lfcarbs');
    .then(response => response.json())
    .then(data=>{
        console.log(data);
-       p3.innerHTML=data.lowfat.protein+" gms";
-       f3.innerHTML=data.lowfat.fat+ " gms";
-       c3.innerHTML=data.lowfat.carbs+ " gms";
+       p3.innerHTML=data.data.lowfat.protein+" gms";
+       f3.innerHTML=data.data.lowfat.fat+ " gms";
+       c3.innerHTML=data.data.lowfat.carbs+ " gms";
    })
    
    }
