@@ -4,8 +4,10 @@
 <%- include('base/navbar')%>
 <html>
   <link rel="stylesheet" href="/css/checkup.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
 <body>
-<div class="container">
+<div class="container ">
     <h1 class=" text-center head">Check up your health</h1>
 
        <div class="d-flex ">
@@ -13,12 +15,21 @@
        <h3 class="head text-center py-3">Enter the Details</h1>
         
         <div>
-            <input value="" class="bg-light border border-primary user form-control" placeholder="Enter name"></input><br>
+            <input value="" id="input1"class="bg-light border border-primary user form-control" placeholder="Enter name"></input><br>
         </div>
         <div class="row">
         <div class="col">
-            <input  value=""  id="input2" class="bg-light border border-primary user form-control" type="number"placeholder="Enter age"></input><br>
+            <input  value=""  id="input2" class="bg-light border border-primary user form-control" type="number"placeholder="Enter age(years)"></input><br>
         </div>
+        <div class="col">
+          <input  value=""  id="input4" class="bg-light  border border-primary user form-control" placeholder="Enter height(Cm)"></input><br>
+        </div>
+        <div class="col">
+          <input  value=""  id="input5" class="bg-light border border-primary user form-control" placeholder="Enter weight(Kg)"></input><br>
+        </div>
+      </div>
+      <div class="row">
+        
         <div class="col">
           <select  value=""  id="input3" class="bg-light  border border-primary user form-control" placeholder="Enter gender">
             <option>male</option>
@@ -26,35 +37,35 @@
           </select>
           <br>
         </div>
-      </div>
-      <div class="row">
+        
         <div class="col">
-          <input  value=""  id="input4" class="bg-light  border border-primary user form-control" placeholder="Enter height"></input><br>
-        </div>
-        <div class="col">
-          <input  value=""  id="input5" class="bg-light border border-primary user form-control" placeholder="Enter weight"></input><br>
-        </div>
-        <div class="col">
-          <input  value=""  id="input6" class="bg-light  border border-primary user form-control" placeholder="Enter Activity level"></input><br>
+          <input  value=""  id="input6" class="bg-light  border border-primary user form-control" placeholder="Rate activity level from 1-5"></input><br>
         </div>
       </div>
 
-        <div class="row text-center">
+        <div class="button row text-center border border-primary rounded p-2">
+          <h3>Choose any one of following diets</h3>
           <div class="col m-1">
-            <button class="btn btn-primary m-2" type="submit" class="submit" onclick="handleSubmit1()">Balanced diet</button>
+            <button class="btn m-2" type="submit" class="submit" onclick="handleSubmit1()">Balanced diet</button>
           </div>
           <div class="col m-1">
-             <button class="btn btn-primary m-2" type="submit" class="submit" onclick="handleSubmit2()">High-Protien diet</button>
+             <button class="btn m-2" type="submit" class="submit" onclick="handleSubmit2()">High-Protien diet</button>
            </div>
            <div class="col m-1">
-             <button class="btn btn-primary m-2" type="submit" class="submit" onclick="handleSubmit3()">Low-Fat diet</button>
+             <button class="btn m-2" type="submit" class="submit" onclick="handleSubmit3()">Low-Fat diet</button>
             </div>
         </div>
-      </form>
+        <div id="BMI" class="border border-primary p-2 mt-5 text-center">
+          <h3>Hey <i class="fa-light fa-hand-wave"></i><span class="name"></span></h3>
+          <p>Your BMI is: <span class="bmi"></span></p>
+          <p>Health is <span class="health"></span></p>
+          <div class="cal text-center"></div>
+
+
+        </div>
   </div>  
 
      <div class="display_right">
-      <div class="cal text-center"></div>
 
       <div class="first border border-primary p-2" id="box1" >
         <h3 class="text-center">For balanced diet</h3>

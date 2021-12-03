@@ -19,7 +19,6 @@ body{
 }
 .display_right .second{
   border-radius: 20px;
-  position:relative;
   width:50%;
   margin-bottom: 20px;
   margin-left: 20px;
@@ -32,6 +31,23 @@ body{
 .display_left{
   width:50%;
 
+}
+.display_left #BMI{
+  display: none;
+  border-radius: 20px;
+margin-right: auto;
+margin-left: auto;
+max-width: auto;
+}
+.display_left .button button
+{
+  color: white;
+  background-color: rgb(50, 11, 87);
+
+}
+.display_left .button button:hover{
+box-shadow: 5px 5px 5px black;
+font-size: 18px;
 }
 .display_right{
   width:50%;
