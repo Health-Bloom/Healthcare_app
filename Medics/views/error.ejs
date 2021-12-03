@@ -3,13 +3,6 @@
 <%- include('base/navbar')%>
 
 <link rel="stylesheet" href="/css/error.css">
-<!-- <div class="row">
-    <div class="col-6 offset-3">
-        <div class="alert alert-danger" role="alert">
-            <h4 class=
-        </div>
-    </div>
-</div> -->
 <section class="page_404">
 	<div class="container">
 		<div class="row">	
@@ -20,6 +13,9 @@
 		            </div>
 		            <div class="contant_box_404">		
 		                <p class="alert alert-primary h3" role="alert"><%=err.message%>!</p>
+						<% if (process.env.NODE_ENV !== "production") { %>
+							<p class="card bg-light p-3"><%= err.stack %></p>
+						<% } %>
 		                <a href="/Contributes" class="btn btn-lg btn-outline-success mt-2">Go to Home</a>
 	                </div>
 		        </div>
