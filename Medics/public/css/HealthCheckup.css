@@ -7,8 +7,8 @@ body{
     }
 .display_right .first{
   border-radius: 20px;
-  /* position:relative; */
-  /* width:50%; */
+   position:relative; 
+   width:50%; 
   left:60%;
   margin-bottom: 20px;
   background-image: linear-gradient(to bottom right,rgb(197, 117, 250),rgb(224, 210, 241));
