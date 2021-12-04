@@ -8,9 +8,9 @@
 <div class="container py-3">
   <h1 class="text-center head">Checkup your health</h1>
 
-       <div class="">
-  <div class="display_left p-3">
-       <h3 class="head text-center py-3">Enter the Details</h1>
+  <div class="">
+    <div class="display_left p-3">
+       <h3 class="head text-center py-3 border-bottom-0">Enter the Details</h1>
         
         <div>
             <input value="" id="input1"class="bg-light border border-primary user form-control" placeholder="Enter name"></input><br>
@@ -47,7 +47,7 @@
         </div>
 
         <div class="button row text-center border border-primary rounded p-2">
-          <h3>Choose any one of following diets</h3>
+          <h3>Choose the diet you want!</h3>
           <div class="col m-1">
             <button class="btn m-2" type="submit" class="submit" onclick="handleSubmit1()">Balanced diet</button>
           </div>
@@ -68,22 +68,25 @@
     </div>  
 
     <div class="display_right col-lg-6">
-        <div class="first border border-primary p-2" id="box1" >
-          <h3 class="text-center">For balanced diet</h3>
+        <div class="first border border-primary p-3" id="box1" >
+          <h5 class="text-center border rounded p-1 bg-light fw-bold 
+           border-3 text-success shadow-sm border-success">BALANCED DIET</h5>
           <p>Protein Intake:<span class="bprotein"></span></p>
           <p>Fat Intake:<span class="bfat"></span></p>
           <p>Carbs Intake:<span class="bcarbs"></span></p>
         </div>
 
-        <div class="border second border-primary p-2" id="box2">
-          <h3 class="text-center">For High-Protien diet</h3>
+        <div class="border second border-primary p-4" id="box2">
+          <h6 class="text-center border rounded p-1 bg-light fw-bold 
+           border-3 text-success shadow-sm border-success">HIGH-PROTEIN DIET</h6>
           <p>Protein Intake:<span class="hprotein"></span></p>
           <p>Fat Intake:<span class="hfat"></span></p>
           <p>Carbs Intake:<span class="hcarbs"></span></p>
         </div>
 
-        <div class="first border border-primary p-2" id="box3">
-          <h3 class="text-center">For Low-Fat diet</h3>
+        <div class="first border border-primary p-4" id="box3">
+          <h5 class="text-center border rounded p-1 bg-light fw-bold 
+           border-3 text-success shadow-sm border-success">LOW-FAT DIET</h5>
           <p>Protein Intake:<span class="lfprotein"></span></p>
           <p>Fat Intake:<span class="lffat"></span></p>
           <p>Carbs Intake:<span class="lfcarbs"></span></p>
@@ -93,7 +96,7 @@
 </div>
 
 
-<script src="/javascripts/checkup.js"></script>
 
 
 <%- include('base/footer')%>
+<script src="/javascripts/checkup.js"></script>
