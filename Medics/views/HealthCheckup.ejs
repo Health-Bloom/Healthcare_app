@@ -1,47 +1,48 @@
-
 <%- include('base/header')%>
 
 <%- include('base/navbar')%>
-<html>
-  <link rel="stylesheet" href="/css/checkup.css">
+
+  <link rel="stylesheet" href="/css/HealthCheckup.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 
-<body>
-<div class="container ">
-    <h1 class=" text-center head">Check up your health</h1>
+<div class="container py-3">
+  <h1 class="text-center head">Checkup your health</h1>
 
-       <div class="d-flex ">
-  <div class="display_left p-3">
-       <h3 class="head text-center py-3">Enter the Details</h1>
-        
-        <div>
-            <input value="" id="input1"class="bg-light border border-primary user form-control" placeholder="Enter name"></input><br>
-        </div>
+  <div class="row">
+
+    <div class="display_left col-lg-6">
+        <h3 class="head text-center py-3">Fill in your Details</h1>
+          
         <div class="row">
-        <div class="col">
-            <input  value=""  id="input2" class="bg-light border border-primary user form-control" type="number"placeholder="Enter age(years)"></input><br>
+          <div class="col">
+              <input value="" id="input1"class="bg-light border border-primary user form-control" placeholder="Enter name"></input><br>
+          </div>
+          <div class="col">
+            <select  value=""  id="input3" class="bg-light  border border-primary user form-control" placeholder="Enter gender">
+              <option>male</option>
+              <option>female</option>
+            </select>
+            <br>
+          </div>
         </div>
-        <div class="col">
-          <input  value=""  id="input4" class="bg-light  border border-primary user form-control" placeholder="Enter height(Cm)"></input><br>
+
+        <div class="row">
+          <div class="col">
+              <input  value=""  id="input2" class="bg-light border border-primary user form-control" type="number"placeholder="Age (years)"></input><br>
+          </div>
+          <div class="col">
+            <input  value=""  id="input4" class="bg-light  border border-primary user form-control" placeholder="Height (Cm)"></input><br>
+          </div>
+          <div class="col">
+            <input  value=""  id="input5" class="bg-light border border-primary user form-control" placeholder="Weight (Kg)"></input><br>
+          </div>
         </div>
-        <div class="col">
-          <input  value=""  id="input5" class="bg-light border border-primary user form-control" placeholder="Enter weight(Kg)"></input><br>
+
+        <div class="row">
+          <div class="col">
+            <input  value=""  id="input6" class="bg-light  border border-primary user form-control" placeholder="Rate your fitness level from 1-5"></input><br>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        
-        <div class="col">
-          <select  value=""  id="input3" class="bg-light  border border-primary user form-control" placeholder="Enter gender">
-            <option>male</option>
-            <option>female</option>
-          </select>
-          <br>
-        </div>
-        
-        <div class="col">
-          <input  value=""  id="input6" class="bg-light  border border-primary user form-control" placeholder="Rate activity level from 1-5"></input><br>
-        </div>
-      </div>
 
         <div class="button row text-center border border-primary rounded p-2">
           <h3>Choose any one of following diets</h3>
@@ -55,44 +56,40 @@
              <button class="btn m-2" type="submit" class="submit" onclick="handleSubmit3()">Low-Fat diet</button>
             </div>
         </div>
+
         <div id="BMI" class="border border-primary p-2 mt-5 text-center">
-          <h3>Hey <i class="fa-light fa-hand-wave"></i><span class="name"></span></h3>
-          <p>Your BMI is: <span class="bmi"></span></p>
+          <h3><span class="name"></span>'s fitness result shows</h3>
+          <p>BMI ratio: <span class="bmi"></span></p>
           <p>Health is <span class="health"></span></p>
           <div class="cal text-center"></div>
-
-
         </div>
-  </div>  
+    </div>  
 
-     <div class="display_right">
+    <div class="display_right col-lg-6">
+        <div class="first border border-primary p-2" id="box1" >
+          <h3 class="text-center">For balanced diet</h3>
+          <p>Protein Intake:<span class="bprotein"></span></p>
+          <p>Fat Intake:<span class="bfat"></span></p>
+          <p>Carbs Intake:<span class="bcarbs"></span></p>
+        </div>
 
-      <div class="first border border-primary p-2" id="box1" >
-        <h3 class="text-center">For balanced diet</h3>
-        <p>Protein Intake:<span class="bprotein"></span></p>
-        <p>Fat Intake:<span class="bfat"></span></p>
-        <p>Carbs Intake:<span class="bcarbs"></span></p>
-      </div>
+        <div class="border second border-primary p-2" id="box2">
+          <h3 class="text-center">For High-Protien diet</h3>
+          <p>Protein Intake:<span class="hprotein"></span></p>
+          <p>Fat Intake:<span class="hfat"></span></p>
+          <p>Carbs Intake:<span class="hcarbs"></span></p>
+        </div>
 
-      <div class="border second border-primary p-2" id="box2">
-        <h3 class="text-center">For High-Protien diet</h3>
-        <p>Protein Intake:<span class="hprotein"></span></p>
-        <p>Fat Intake:<span class="hfat"></span></p>
-        <p>Carbs Intake:<span class="hcarbs"></span></p>
-      </div>
-
-      <div class="first border border-primary p-2" id="box3">
-        <h3 class="text-center">For Low-Fat diet</h3>
-        <p>Protein Intake:<span class="lfprotein"></span></p>
-        <p>Fat Intake:<span class="lffat"></span></p>
-        <p>Carbs Intake:<span class="lfcarbs"></span></p>
-      </div>
+        <div class="first border border-primary p-2" id="box3">
+          <h3 class="text-center">For Low-Fat diet</h3>
+          <p>Protein Intake:<span class="lfprotein"></span></p>
+          <p>Fat Intake:<span class="lffat"></span></p>
+          <p>Carbs Intake:<span class="lfcarbs"></span></p>
+        </div>
+    </div>
+  </div>
 </div>
-</div>
 
+<%- include('base/footer')%>
 
-
-    <%- include('base/footer')%>
-    <script src="/javascripts/checkup.js"></script>
-  </body>
-  </html>
+<script src="/javascripts/checkup.js"></script>
