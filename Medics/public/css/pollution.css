@@ -23,7 +23,7 @@ body{
  .container .row .border{
     background-color: rgb(253, 226, 236);
  }
- .container .row .border .row .text .btn{
+ .container .row .border .text .btn{
      background-color: rgb(92, 76, 180);
      color: white;
      border-radius: 8px;
