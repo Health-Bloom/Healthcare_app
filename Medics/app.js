@@ -14,10 +14,18 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const User = require('./models/userSchema');
 
+const MongoStore = require('connect-mongo');
+
 const contributeRoutes = require('./routes/contributeRoutes');
 const userRoutes = require('./routes/userRoutes');
 
-mongoose.connect('mongodb://localhost:27017/HealthCare', { useNewUrlParser: true, useUnifiedTopology: true })
+const DBAPI = process.env.DB_URL || 'mongodb://localhost:27017/HealthCare';
+
+mongoose.connect(DBAPI, { 
+    useNewUrlParser: true, 
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false})
     .then(() => {
         console.log("Database connected")
     })
@@ -33,9 +41,22 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')))
 
-const sessionConfig = {
+const secret = process.env.SECRET || 'Default';
+
+// const store = MongoStore.create({
+//     url: DBAPI,
+//     secret,
+//     touchAfter: 24 * 60 * 60
+// });
+
+// store.on("error", function (e) {
+//     console.log("SESSION STORE ERROR", e)
+// })
+
+const sessionParams = {
+    // store,
     name: 'user.session',
-    secret: 'none',
+    secret,
     resave: false,
     saveUninitialized: true,
     cookie: {
@@ -46,7 +67,7 @@ const sessionConfig = {
     }
 }
 
-app.use(session(sessionConfig))
+app.use(session(sessionParams))
 app.use(flash());
 
 app.use(passport.initialize());

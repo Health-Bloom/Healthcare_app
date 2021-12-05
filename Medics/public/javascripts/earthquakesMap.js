@@ -1,22 +1,4 @@
-MAPBOX_TOKEN='pk.eyJ1Ijoic2FwdGFrMTAiLCJhIjoiY2tyeXB4cHYyMDY2NzJ2cGp5MzRoN21xdSJ9.zdeg5V6RN8vcfFZrZ2rBmw'
-
-
-// const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
-// const mapBoxToken = process.env.MAPBOX_TOKEN;
-// const geocoder = mbxGeocoding({ accessToken: mapBoxToken });
-
-//     var location =  geocoder.reverseGeocode({
-//         query: [88.302491, 22.504070]
-//       }).send()
-    
-//       console.log(location.body.features)
-//         // .then(response => {
-//         //   // GeoJSON document with geocoding matches
-//         //   const match = response.body;
-//         // });
-
-
-mapboxgl.accessToken = MAPBOX_TOKEN;
+mapboxgl.accessToken = mapToken;
 const map = new mapboxgl.Map({
     container: 'cluster-map',
     style: 'mapbox://styles/mapbox/streets-v11',
@@ -33,8 +15,6 @@ map.on('load', function () {
     // add the point_count property to your source data.
     map.addSource('earthquakes', {
         type: 'geojson',
-        // Point to GeoJSON data. This example visualizes all M1.0+ earthquakes
-        // from 12/22/15 to 1/21/16 as logged by USGS' Earthquake hazards program.
         data: 'https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson',
         cluster: true,
         clusterMaxZoom: 14, // Max zoom to cluster points on
@@ -47,11 +27,6 @@ map.on('load', function () {
         source: 'earthquakes',
         filter: ['has', 'point_count'],
         paint: {
-            // Use step expressions (https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions-step)
-            // with three steps to implement three types of circles:
-            //   * Blue, 20px circles when point count is less than 100
-            //   * Yellow, 30px circles when point count is between 100 and 750
-            //   * Pink, 40px circles when point count is greater than or equal to 750
             'circle-color': [
                 'step',
                 ['get', 'point_count'],
@@ -137,7 +112,6 @@ map.on('load', function () {
 
         new mapboxgl.Popup()
             .setLngLat(coordinates)
-            // .setHTML(popUpMarkup)
             .setHTML(
                 `magnitude: ${mag}<br>Was there a tsunami?: ${tsunami}`
                 )

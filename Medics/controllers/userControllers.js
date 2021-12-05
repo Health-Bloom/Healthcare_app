@@ -16,7 +16,6 @@ module.exports.newUser = async(req, res) => {
     } catch (e) {
         req.flash('error', e.message);
         res.redirect('/');
-        // res.status(204).send()
     }
 }
 
@@ -48,43 +47,3 @@ module.exports.userDetails = (req, res) => {
           })
         });
     }
-
-// module.exports.editUserDetails = (req, res) => {
-//         User.findById(req.params.id, function(err, foundUser) {
-//           if(err) {
-//             req.flash("error", "Something went wrong.");
-//             return res.redirect("/");
-//           }
-//           Contribute.find().where('author').equals(foundUser._id).exec(function(err, Contributes) {
-//             if(err) {
-//               req.flash("error", "Something went wrong.");
-//               return res.redirect("/");
-//             }
-//             res.render("users/show", {user: foundUser, Contributes: Contributes});
-//         })
-//     });
-// }
-
-// //USER EDIT ROUTE
-// router.get('/users/:id/edit', middleware.checkProfileOwnership, function (req, res) {
-//   User.findById(req.params.id, function (err, foundUser) {
-//       if(err) {
-//           req.flash('error', 'Something Went Wrong!');
-//           return res.redirect('/campgrounds');
-//       }
-//       res.render('users/edit', {user: foundUser});
-//   });
-// });
-
-// //USER UPDATE ROUTE
-// router.put('/users/:id', middleware.checkProfileOwnership, function (req, res) {
-//   User.findByIdAndUpdate(req.params.id, req.body.user, function (err, updatedUser) {
-//       if (err) {
-//           res.redirect('back');
-//       } else {
-//           req.flash('success', 'Profile Updated!')
-//           res.redirect('/users/' + req.params.id);
-//       };
-//   });
-// });
-

@@ -2,8 +2,8 @@
 
 <%- include('base/navbar')%>
 
-  <link rel="stylesheet" href="/css/HealthCheckup.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+<link rel="stylesheet" href="/css/HealthCheckup.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 
 <div class="container py-3">
   <h1 class="text-center head">Checkup your health</h1>
@@ -17,7 +17,7 @@
         </div>
         <div class="row">
           <div class="col">
-              <input value="" id="input1"class="bg-light border border-primary user form-control" placeholder="Enter name"></input><br>
+            <input  value=""  id="input2" class="bg-light border border-primary user form-control" type="number"placeholder="Age (years)"></input><br>
           </div>
           <div class="col">
             <select  value=""  id="input3" class="bg-light  border border-primary user form-control" placeholder="Enter gender">
@@ -29,9 +29,6 @@
         </div>
 
         <div class="row">
-          <div class="col">
-              <input  value=""  id="input2" class="bg-light border border-primary user form-control" type="number"placeholder="Age (years)"></input><br>
-          </div>
           <div class="col">
             <input  value=""  id="input4" class="bg-light  border border-primary user form-control" placeholder="Height (Cm)"></input><br>
           </div>
@@ -62,14 +59,14 @@
         <div id="BMI" class="border border-primary p-2 mt-5 text-center">
           <h3><span class="name"></span>'s fitness result shows</h3>
           <p>BMI ratio: <span class="bmi"></span></p>
-          <p>Health is <span class="health"></span></p>
+          <p>You are in <span class="health fw-bold"></span> category</p>
           <div class="cal text-center"></div>
         </div>
     </div>  
 
     <div class="display_right col-lg-6">
         <div class="first border border-primary p-3" id="box1" >
-          <h5 class="text-center border rounded p-1 bg-light fw-bold 
+          <h5 class="text-center border rounded-pill p-1 bg-light fw-bold 
            border-3 text-success shadow-sm border-success">BALANCED DIET</h5>
           <p>Protein Intake:<span class="bprotein"></span></p>
           <p>Fat Intake:<span class="bfat"></span></p>
@@ -77,7 +74,7 @@
         </div>
 
         <div class="border second border-primary p-4" id="box2">
-          <h6 class="text-center border rounded p-1 bg-light fw-bold 
+          <h6 class="text-center border rounded-pill p-1 bg-light fw-bold 
            border-3 text-success shadow-sm border-success">HIGH-PROTEIN DIET</h6>
           <p>Protein Intake:<span class="hprotein"></span></p>
           <p>Fat Intake:<span class="hfat"></span></p>
@@ -85,7 +82,7 @@
         </div>
 
         <div class="first border border-primary p-4" id="box3">
-          <h5 class="text-center border rounded p-1 bg-light fw-bold 
+          <h5 class="text-center border rounded-pill p-1 bg-light fw-bold 
            border-3 text-success shadow-sm border-success">LOW-FAT DIET</h5>
           <p>Protein Intake:<span class="lfprotein"></span></p>
           <p>Fat Intake:<span class="lffat"></span></p>
@@ -95,8 +92,6 @@
   </div>
 </div>
 
-
-
-
 <%- include('base/footer')%>
-<script src="/javascripts/checkup.js"></script>
+
+<script src="/javascripts/HealthCheckup.js"></script>

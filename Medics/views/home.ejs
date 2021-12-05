@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset='utf-8'>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,30 +11,9 @@
 </head>
 
 <body class="d-flex text-center bg-dark">
-
-    <style>
-        @media (min-width: 1024px) {
-        .logged_state{
-         position: absolute;
-         right:20px;
-        }
-        .logged_state a {
-        border-radius: 5px;
-        background-color: rgb(66, 64, 64);
-        margin-left: 10px;
-      }
-        .logged_state a:hover {
-          background-color: rgb(44, 43, 43);
-          box-shadow: 0px 1px 3px 3px;
-      }
-      }
-      
-      </style>
     <div class="d-flex w-100 h-100 p-3 mx-auto flex-column">
         <header class="mb-auto">
             <div class="container">
-                <!-- <h3 class="float-md-left mb-0 text-success">Med-Tech</h3> -->
-                <!-- <nav class="nav nav-masthead justify-content-center float-md-right"> -->
                 <nav class="nav nav-masthead justify-content-center">
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                     <% if(!currentUser) {%>
@@ -60,7 +38,7 @@
         </header>
         <main  class="px-3 pt-5 mt-5">
             
-    <%- include('./base/flash.ejs')%>
+        <%- include('./base/flash.ejs')%>
 
             <h1 class="display-4 text-white" style="font-family: 'Sofia';font-size: 55px;">HealthCare</h1>
             <p class="lead p-3 pb-3 center_text">A Medical website used to contribute and get information about medicine and health</p>
@@ -93,6 +71,4 @@
 <%- include('./usersAuth/register')%>
  
 </body>
-
 </html>
-<!--"https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"-->

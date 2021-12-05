@@ -21,6 +21,4 @@ router.get('/logout', user.userLogout);
 
 router.get("/user/:id", user.userDetails);
 
-// router.get("/user/:id/edit", user.editUserDetails);
-
 module.exports = router;

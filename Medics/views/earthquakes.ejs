@@ -1,19 +1,19 @@
 <%- include('base/header')%>
 
 <%- include('base/navbar')%>
-<html>
-    <link rel="stylesheet" href="/css/earthquakes.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 
-   <body>
-    <h1 class="head heading text-center py-3">Get the site of  all the earthquakes around the world</h1>
-    <div class="container">    
-        <div class="border border-primary mb-4 shadow" id="cluster-map"></div>
-    </div>
+<link rel="stylesheet" href="/css/earthquakes.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 
-    <%- include('base/footer')%>
+<h1 class="head heading text-center py-3">Get the site of all the earthquakes around the world</h1>
+<div class="container">    
+    <div class="border border-primary mb-4 shadow" id="cluster-map"></div>
+</div>
 
-    <script src="/javascripts/earthquakesMap.js"></script> 
+<%- include('base/footer')%>
 
-</body>
- </html>
+<script>
+    const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
+</script>
+
+<script src="/javascripts/earthquakesMap.js"></script> 

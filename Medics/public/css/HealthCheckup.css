@@ -1,10 +1,10 @@
 body{
-    background-color: rgb(182, 248, 215);
+  background-color: rgb(182, 248, 215);
 }
 .display_right .first{
   border-radius: 20px;
-   position:relative; 
-   width:50%; 
+  position:relative; 
+  width:50%; 
   left:60%;
   margin-bottom: 20px;
   background-image: linear-gradient(to bottom right,rgb(197, 117, 250),rgb(224, 210, 241));
@@ -28,15 +28,12 @@ body{
   box-shadow: 5px 10px 30px;
   display: none;
   transition: all 0.03s ease;
-
 }
 .display_left{
   width:50%;
   float: left;
-
 }
 @media (max-width: 800px) {
-
   .display_left{
     width:100%;
   }
@@ -44,35 +41,32 @@ body{
     min-width:100%;
   }
   .display_right .first{
-    /* left: 5%; */
     width:80%;
   }
   .display_right .second{
-    /* left:5%; */
     right:0px;
     width:80%;
-
   }
 }
 
 .display_left #BMI{
   display: none;
   border-radius: 20px;
-/* margin-right: auto; */
-/* margin-left: auto; */
-max-width: auto;
+  max-width: auto;
 }
+
 .display_left .button button
 {
   color: white;
   background-color: rgb(50, 11, 87);
+}
 
-}
 .display_left .button button:hover{
-box-shadow: 5px 5px 5px black;
-font-size: 18px;
+  box-shadow: 5px 5px 5px black;
+  font-size: 18px;
 }
+
 .display_right{
   width:50%;
-float:right
+  float:right
 }

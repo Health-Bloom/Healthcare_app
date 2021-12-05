@@ -3,15 +3,16 @@
 <%- include('base/navbar')%>
 
 <link rel="stylesheet" href="/css/error.css">
-<section class="page_404">
+
+<section class="page_statusCode">
 	<div class="container">
 		<div class="row">	
 		    <div class="col-sm-12 ">
 		        <div class="col-sm-12 col-sm-offset-1 text-center">
-		            <div class="four_zero_four_bg">
-			            <h1 class="text-center "><%=statusCode%>!</h1>		
+		            <div class="statusCode_bg">
+			            <h1 class="text-center"><%=statusCode%>!</h1>		
 		            </div>
-		            <div class="contant_box_404">		
+		            <div class="content_box_statusCode">		
 		                <p class="alert alert-primary h3" role="alert"><%=err.message%>!</p>
 						<% if (process.env.NODE_ENV !== "production") { %>
 							<p class="card bg-light p-3"><%= err.stack %></p>

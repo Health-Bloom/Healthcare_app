@@ -11,5 +11,4 @@ passport.use(new localStrategy({
     usernameField:'email'}),autheticateUser)
     passport.serialiseUser((user,done)=>{ })
     passport.deserialiseUser((id,done)=>{ })
-
 }

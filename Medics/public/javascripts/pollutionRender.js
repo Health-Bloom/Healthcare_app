@@ -1,7 +1,6 @@
 var poll_submit= document.querySelector('.submit');
 var lat = document.querySelector('#latitude');
 var long = document.querySelector('#longitude');
-// console.log(lat.value);
 var input0 = document.querySelector('.input0');
 var input1 = document.querySelector('.input1');
 var input2 = document.querySelector('.input2');
@@ -34,8 +33,7 @@ poll_submit.addEventListener('click', function(){
     input3.innerHTML=" : "+i3+ " ppm";
     input6.innerHTML=" : "+i6+" ppm";
 
-
-mapboxgl.accessToken = 'pk.eyJ1Ijoic2FwdGFrMTAiLCJhIjoiY2tyeXB4cHYyMDY2NzJ2cGp5MzRoN21xdSJ9.zdeg5V6RN8vcfFZrZ2rBmw';
+mapboxgl.accessToken = mapToken;
 const map = new mapboxgl.Map({
 container: 'map', // container ID
 style: 'mapbox://styles/mapbox/streets-v11', // style URL
