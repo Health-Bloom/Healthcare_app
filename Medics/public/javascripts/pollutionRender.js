@@ -1,5 +1,6 @@
-var lat,long
-// console.log(lat.value);
+var poll_submit= document.querySelector('.submit');
+var lat = document.querySelector('#latitude');
+var long = document.querySelector('#longitude');
 var input0 = document.querySelector('.input0');
 var input1 = document.querySelector('.input1');
 var input2 = document.querySelector('.input2');
@@ -19,8 +20,9 @@ function getLocation() {
 }
 
 function showPosition(position) {
-    lat=position.coords.latitude;
-    long=position.coords.longitude;
+    console.log(position)
+    var lat=position.coords.latitude;
+    var long=position.coords.longitude;
     fetch('https://air-quality.p.rapidapi.com/current/airquality?lon='+long+'&lat='+lat,{
         "method": "GET",
         "headers": {
@@ -30,7 +32,7 @@ function showPosition(position) {
     })
     .then(response => response.json())
     .then(data=>{
-        console.log(data.data[0]);
+//         console.log(data.data[0]);
         var i0=data.data[0].aqi;
         var i1=data.data[0].co;
         var i2=data.data[0].no2;
@@ -43,8 +45,7 @@ function showPosition(position) {
         input3.innerHTML=" : "+i3+ " ppm";
         input6.innerHTML=" : "+i6+" ppm";
     
-    
-    mapboxgl.accessToken = 'pk.eyJ1Ijoic2FwdGFrMTAiLCJhIjoiY2tyeXB4cHYyMDY2NzJ2cGp5MzRoN21xdSJ9.zdeg5V6RN8vcfFZrZ2rBmw';
+    mapboxgl.accessToken = mapToken;
     const map = new mapboxgl.Map({
     container: 'map', // container ID
     style: 'mapbox://styles/mapbox/streets-v11', // style URL
@@ -53,22 +54,22 @@ function showPosition(position) {
     });
     
     map.addControl(new mapboxgl.NavigationControl({ "visualizePitch": "true" }));
-    
-    new mapboxgl.Marker({ "color": "#b40219" })
+
+    new mapboxgl.Marker({ color: "#b40219" })
         .setLngLat([long, lat])
         .setPopup(
             new mapboxgl.Popup({ offset: 25 })
                 .setHTML(
-                    `<h6>${long.substring(0, 10)}, ${lat.substring(0, 10)}</h6>`
+                    `<h6>${long}, ${lat}</h6>`
                 )
         )
         .addTo(map);
-    
     })
     .catch(err => {
         console.error(err);
     });
   }
+
   function Location(){
     fetch('https://air-quality.p.rapidapi.com/current/airquality?lat='+lat.value+'&lon='+long.value,{
         "method": "GET",
@@ -79,7 +80,7 @@ function showPosition(position) {
     })
     .then(response => response.json())
     .then(data=>{
-        console.log(data.data[0]);
+//         console.log(data.data[0]);
         var i0=data.data[0].aqi;
         var i1=data.data[0].co;
         var i2=data.data[0].no2;
@@ -102,7 +103,7 @@ function showPosition(position) {
     
     map.addControl(new mapboxgl.NavigationControl({ "visualizePitch": "true" }));
     
-    new mapboxgl.Marker({ "color": "#b40219" })
+    new mapboxgl.Marker({ color: "#b40219" })
         .setLngLat([long.value, lat.value])
         .setPopup(
             new mapboxgl.Popup({ offset: 25 })
@@ -111,7 +112,6 @@ function showPosition(position) {
                 )
         )
         .addTo(map);
-    
     })
     .catch(err => {
         console.error(err);
