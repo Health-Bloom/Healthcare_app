@@ -10,7 +10,6 @@ var input5 = document.querySelector('.input5');
 var input6 = document.querySelector('.input6');
 
 function getLocation() {
-    console.log(1);
     if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
   } else {
@@ -20,7 +19,6 @@ function getLocation() {
 }
 
 function showPosition(position) {
-    console.log(position)
     var lat=position.coords.latitude;
     var long=position.coords.longitude;
     fetch('https://air-quality.p.rapidapi.com/current/airquality?lon='+long+'&lat='+lat,{
@@ -32,7 +30,6 @@ function showPosition(position) {
     })
     .then(response => response.json())
     .then(data=>{
-//         console.log(data.data[0]);
         var i0=data.data[0].aqi;
         var i1=data.data[0].co;
         var i2=data.data[0].no2;
@@ -80,7 +77,6 @@ function showPosition(position) {
     })
     .then(response => response.json())
     .then(data=>{
-//         console.log(data.data[0]);
         var i0=data.data[0].aqi;
         var i1=data.data[0].co;
         var i2=data.data[0].no2;
