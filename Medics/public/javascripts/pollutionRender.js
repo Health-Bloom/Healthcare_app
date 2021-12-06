@@ -1,5 +1,3 @@
-var lat,long;
-// console.log(lat.value);
 var input0 = document.querySelector('.input0');
 var input1 = document.querySelector('.input1');
 var input2 = document.querySelector('.input2');
@@ -12,7 +10,6 @@ function getLocation() {
     var options={
         enableHighAccuracy: true,
         timeout:5000
-
     }
     
     if (navigator.geolocation) {
@@ -27,9 +24,6 @@ function showPosition(position) {
 
     lat=position.coords.latitude;
     long=position.coords.longitude;
-console.log(lat);
-console.log(long);
-
 
     fetch('https://air-quality.p.rapidapi.com/current/airquality?lon='+long+'&lat='+lat,{
         "method": "GET",
@@ -40,7 +34,6 @@ console.log(long);
     })
     .then(response => response.json())
     .then(data=>{
-        console.log(data.data[0]);
         var i0=data.data[0].aqi;
         var i1=data.data[0].co;
         var i2=data.data[0].no2;
@@ -54,7 +47,7 @@ console.log(long);
         input6.innerHTML=" : "+i6+" ppm";
     
     
-    mapboxgl.accessToken = 'pk.eyJ1Ijoic2FwdGFrMTAiLCJhIjoiY2tyeXB4cHYyMDY2NzJ2cGp5MzRoN21xdSJ9.zdeg5V6RN8vcfFZrZ2rBmw';
+    mapboxgl.accessToken = mapToken;
     const map = new mapboxgl.Map({
     container: 'map', // container ID
     style: 'mapbox://styles/mapbox/streets-v11', // style URL
@@ -64,7 +57,7 @@ console.log(long);
     
     map.addControl(new mapboxgl.NavigationControl({ "visualizePitch": "true" }));
     
-    new mapboxgl.Marker({ "color": "#b40219" })
+    new mapboxgl.Marker({ color: "#b40219" })
         .setLngLat([long, lat])
         .setPopup(
             new mapboxgl.Popup({ offset: 25 })
@@ -84,8 +77,10 @@ function error(){
 }
 
   function Location(){
+
     var lat = document.querySelector('#latitude');
     var long = document.querySelector('#longitude');
+
     fetch('https://air-quality.p.rapidapi.com/current/airquality?lat='+lat.value+'&lon='+long.value,{
         "method": "GET",
         "headers": {
@@ -95,7 +90,6 @@ function error(){
     })
     .then(response => response.json())
     .then(data=>{
-        console.log(data.data[0]);
         var i0=data.data[0].aqi;
         var i1=data.data[0].co;
         var i2=data.data[0].no2;
@@ -118,7 +112,7 @@ function error(){
     
     map.addControl(new mapboxgl.NavigationControl({ "visualizePitch": "true" }));
     
-    new mapboxgl.Marker({ "color": "#b40219" })
+    new mapboxgl.Marker({ color: "#b40219" })
         .setLngLat([long.value, lat.value])
         .setPopup(
             new mapboxgl.Popup({ offset: 25 })
