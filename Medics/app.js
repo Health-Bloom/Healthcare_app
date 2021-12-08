@@ -43,19 +43,21 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 const secret = process.env.SECRET || 'Default';
 
-// const store = MongoStore.create({
-//     url: DBAPI,
-//     secret,
-//     touchAfter: 24 * 60 * 60
-// });
+const store = MongoStore.create({
+    mongoUrl: DBAPI,
+    crypto: {
+        secret,
+    },
+    touchAfter: 24 * 60 * 60
+});
 
-// store.on("error", function (e) {
-//     console.log("SESSION STORE ERROR", e)
-// })
+store.on("error", function (e) {
+    console.log("Session store error", e)
+})
 
 const sessionParams = {
-    // store,
     name: 'user.session',
+    store,
     secret,
     resave: false,
     saveUninitialized: true,
