@@ -63,11 +63,16 @@ const sessionParams = {
     saveUninitialized: true,
     cookie: {
         httpOnly: true,
-        // secure: true,
+        secure: true,
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
 }
+
+if (process.env.NODE_ENV === 'production') {
+    app.set('trust proxy', 1); // trust first proxy
+    sessionParams.cookie.secure = true; // serve secure cookies
+  }
 
 app.use(session(sessionParams))
 app.use(flash());
